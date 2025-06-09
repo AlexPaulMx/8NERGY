@@ -607,6 +607,8 @@ a {
 .modal-title {
   margin-bottom: 1.5rem;
   color: var(--text-color);
+  font-size: 2rem; /* Reduced for desktop */
+  text-align: center; /* Centered for desktop */
 }
 
 .modal-description {
@@ -737,8 +739,8 @@ a {
   width: 40px;
   height: 40px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.8;
+  /* filter: brightness(0) invert(1); */ /* Removed to show original colors */
+  /* opacity: 0.8; */ /* Removed to show original opacity */
 }
 
 .skill-item span {
@@ -853,13 +855,13 @@ a {
 }
 
 .portfolio-header-text {
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 1.8rem; /* Reduced for desktop */
+  font-weight: normal; /* Make it not bold */
   line-height: 1.2;
   letter-spacing: -0.04em;
   color: #fff;
-  text-align: left;
-  padding-left: 0.5rem;
+  text-align: center; /* Centered for desktop */
+  padding-left: 0;
   margin-bottom: 1.5rem;
 }
 
@@ -1854,6 +1856,7 @@ a {
     .modal-title {
         font-size: 1.5rem; /* Reduced from default */
         margin-bottom: 1rem;
+        text-align: center; /* Centered for mobile modals */
     }
 
     .modal-description {
@@ -1899,12 +1902,14 @@ a {
 
     /* Portfolio Modal adjustments */
     .portfolio-header-text {
-        font-size: 1.8rem;
+        font-size: 1.2rem; /* Reduced further for mobile */
         margin-bottom: 1rem;
+        font-weight: normal;
+        text-align: center; /* Centered text */
     }
 
     .portfolio-title {
-        font-size: 1rem;
+        font-size: 0.9rem; /* Reduced further for mobile */
     }
 
     .portfolio-category {
@@ -1913,8 +1918,10 @@ a {
 
     /* Graphic Design Modal adjustments */
     .graphic-design-header-text {
-        font-size: 1.8rem;
+        font-size: 1.5rem; /* Reduced for mobile */
+        font-weight: normal; /* Make it not bold */
         margin-bottom: 1rem;
+        text-align: center; /* Centered text */
     }
 
     .graphic-design-title {
@@ -1970,6 +1977,15 @@ a {
     .social-button {
         font-size: 0.8rem;
         padding: 0.6rem 1rem;
+    }
+
+    /* Clients Modal adjustments */
+    .clients-header-text {
+        font-size: 1.5rem; /* Reduced for mobile */
+        font-weight: normal; /* Make it not bold */
+        margin-bottom: 1.5rem;
+        text-align: center; /* Centered text */
+        padding: 0 1rem;
     }
 }
 

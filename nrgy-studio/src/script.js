@@ -115,6 +115,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fusion360/fusion360-original.svg" alt="Fusion 360">
                             <span>Fusion 360</span>
                         </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+                            <span>C++</span>
+                        </div>
                     </div>
                 </div>
             `
