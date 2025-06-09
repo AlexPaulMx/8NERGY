@@ -1570,14 +1570,15 @@ a {
 .card-clients .card-inner {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
+    align-items: flex-start; /* Align content to the left */
+    justify-content: flex-end; /* Push content to the bottom */
+    padding: 0.5rem 1.75rem; /* Add horizontal padding to match card padding */
     height: 100%;
+    position: relative; /* Needed for absolute positioning of child elements */
 }
 
 .card-clients .card-icon {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Reduced icon size */
     margin-bottom: 0.5rem;
 }
 
@@ -1738,6 +1739,23 @@ a {
         flex-direction: row;
         gap: 1rem;
         width: 100%;
+    }
+
+    .about-contact-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 100%;
+        margin-bottom: 1rem; /* Adjust as needed */
+    }
+
+    .about-contact-wrapper .card-about,
+    .about-contact-wrapper .card-contact {
+        width: 48%; /* Adjust for gap */
+        min-height: 150px;
+        order: unset; /* Remove previous order if any */
+        grid-area: unset; /* Remove previous grid-area if any */
     }
 
     .card-about, .card-portfolio, .card-contact, .icons-card, .card-resume, .card-clients {
@@ -1976,4 +1994,13 @@ a {
         text-align: center;
         padding: 0 1rem;
     }
+}
+
+.card-clients .card-title {
+    position: absolute;
+    bottom: 1.75rem; /* Adjust based on card padding */
+    left: 1.75rem; /* Adjust based on card padding */
+    width: auto; /* Let content determine width */
+    text-align: left;
+    margin-bottom: 0; /* Override any default margin */
 }
