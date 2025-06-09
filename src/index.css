@@ -1658,3 +1658,319 @@ a {
 }
 
 /* End Card Hover Effects */
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .App-container {
+        padding: 1rem;
+    }
+
+    .header {
+        flex-direction: row;
+        text-align: left;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-left {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .header-left h1 {
+        font-size: 1.2rem;
+        white-space: nowrap;
+    }
+
+    .header-right {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+    }
+
+    .main-title {
+        font-size: 5.5rem;
+        padding: 0 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0 1rem;
+        margin-top: -3.5rem;
+    }
+
+    .card-about {
+        width: 48%;
+        min-height: 150px;
+        order: 1;
+    }
+
+    .card-contact {
+        width: 48%;
+        min-height: 150px;
+        order: 2;
+    }
+
+    .card-portfolio {
+        width: 100%;
+        order: 0;
+    }
+
+    .icons-card,
+    .card-clients,
+    .card-resume {
+        width: 100%;
+        order: 3;
+    }
+
+    .contact-about-container {
+        display: contents;
+    }
+
+    .card-about, .card-portfolio, .card-contact, .icons-card, .card-resume, .card-clients {
+        grid-area: auto;
+    }
+
+    .card {
+        max-width: 100%;
+        margin: 0;
+        min-height: 200px;
+        padding: 1.5rem;
+    }
+
+    .card-inner {
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 0.9rem;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        bottom: 0.75rem;
+        left: 1rem;
+    }
+
+    .card-description {
+        font-size: 0.8rem;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        bottom: 0.25rem;
+        left: 1rem;
+    }
+
+    .card-icon {
+        top: 1rem;
+        right: 1.25rem;
+        font-size: 1rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .footer-credit {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .modal-content.portfolio-modal,
+    .modal-content.graphic-design-modal {
+        width: 95%;
+        height: auto;
+        max-height: 90vh;
+    }
+
+    .modal-content.contact-modal {
+        width: 95%;
+        height: auto;
+        max-height: 90vh;
+        padding: 1.5rem;
+    }
+
+    .portfolio-grid,
+    .graphic-design-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .clients-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .client-item {
+        padding: 1.5rem;
+    }
+
+    .client-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .client-item p {
+        font-size: 0.9rem;
+    }
+
+    .carousel-container {
+        height: 200px;
+    }
+
+    .carousel-image {
+        padding: 1rem;
+    }
+
+    .carousel-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .carousel-dots {
+        bottom: 10px;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .modal-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    /* About Modal adjustments */
+    .about-intro-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-secondary-text {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .services-section h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .service-item h4 {
+        font-size: 1.1rem;
+    }
+
+    .service-item p {
+        font-size: 0.85rem;
+    }
+
+    .skills-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .skill-item span {
+        font-size: 0.8rem;
+    }
+
+    /* Portfolio Modal adjustments */
+    .portfolio-header-text {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        font-weight: normal;
+        text-align: center;
+    }
+
+    .portfolio-title {
+        font-size: 0.9rem;
+    }
+
+    .portfolio-category {
+        font-size: 0.75rem;
+    }
+
+    /* Graphic Design Modal adjustments */
+    .graphic-design-header-text {
+        font-size: 1.5rem;
+        font-weight: normal;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .graphic-design-title {
+        font-size: 1rem;
+    }
+
+    .graphic-design-category {
+        font-size: 0.75rem;
+    }
+
+    /* Contact Modal adjustments */
+    .contact-header-text {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+    }
+
+    .form-section-header {
+        font-size: 0.9rem;
+    }
+
+    .checkbox-container,
+    .radio-container {
+        font-size: 0.9rem;
+        padding-left: 1.5rem;
+    }
+
+    .submit-button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .spot-available {
+        font-size: 0.8rem;
+    }
+
+    .contact-alternative-text {
+        font-size: 0.85rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .social-button {
+        font-size: 0.8rem;
+        padding: 0.6rem 1rem;
+    }
+
+    /* Clients Modal adjustments */
+    .clients-header-text {
+        font-size: 1.5rem;
+        font-weight: normal;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        padding: 0 1rem;
+    }
+}
