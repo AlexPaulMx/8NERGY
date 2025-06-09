@@ -1734,7 +1734,10 @@ a {
     }
 
     .contact-about-container {
-        display: contents;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        width: 100%;
     }
 
     .card-about, .card-portfolio, .card-contact, .icons-card, .card-resume, .card-clients {
