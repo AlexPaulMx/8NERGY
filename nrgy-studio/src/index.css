@@ -119,10 +119,10 @@ a {
 .main-content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: minmax(250px, auto) minmax(250px, auto);
+  grid-template-rows: minmax(200px, auto) minmax(200px, auto);
   grid-template-areas:
-    "portfolio portfolio contact"
-    "about icons resume";
+    "portfolio portfolio about"
+    "contact clients graphicDesign";
   gap: 1.25rem;
   width: 100%;
   padding: 0 2.5rem;
@@ -133,14 +133,11 @@ a {
 .card-about { grid-area: about; }
 .card-portfolio { grid-area: portfolio; }
 .card-contact { grid-area: contact; }
-/* .image-card { 
-  grid-area: image;
-  border-radius: 1.25rem; 
-} */
-.icons-card { grid-area: icons; 
-  display: flex; /* Ensure flexbox for centering content */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+.card-clients { grid-area: clients; }
+.icons-card { grid-area: graphicDesign;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .card-resume { grid-area: resume; }
 
@@ -159,7 +156,8 @@ a {
   flex-direction: column;
   justify-content: flex-end;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  background-color: rgba(10, 10, 10, 0.4); /* Fondo base de la tarjeta */
+  background-color: rgba(10, 10, 10, 0.4);
+  min-height: 200px;
 }
 
 .card-portfolio {
@@ -410,18 +408,32 @@ a {
 }
 
 .card-title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 400;
   margin-bottom: 0;
   color: #fff;
   letter-spacing: -0.01em;
   text-align: left;
   width: 100%;
   font-family: 'Inter', sans-serif;
+  position: absolute;
+  bottom: 1rem;
+  left: 1.5rem;
 }
 
 .card-content {
   display: none;
+}
+
+.card-description {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  opacity: 0.8;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  position: absolute;
+  bottom: 0.5rem;
+  left: 1.5rem;
 }
 
 .card-link-icon {
@@ -430,11 +442,11 @@ a {
 
 .card-icon {
   position: absolute;
-  top: 1.5rem; /* Ajusta la posición vertical */
-  right: 1.75rem; /* Ajusta la posición horizontal al lado derecho */
-  left: auto; /* Elimina la propiedad left */
-  font-size: 1.4rem; /* Haz el icono más pequeño */
-  color: #888; /* Color gris suave */
+  top: 1.25rem;
+  right: 1.5rem;
+  left: auto;
+  font-size: 1.1rem;
+  color: #888;
   transition: color 0.2s ease;
 }
 
@@ -1571,7 +1583,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     padding: 0.5rem;
     height: 100%;
 }
@@ -1587,7 +1599,6 @@ a {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
     height: 100%;
 }
 
@@ -1658,3 +1669,187 @@ a {
 }
 
 /* End Card Hover Effects */
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .App-container {
+        padding: 1rem;
+    }
+
+    .header {
+        flex-direction: row;
+        text-align: left;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-left {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .header-left h1 {
+        font-size: 1.2rem;
+        white-space: nowrap;
+    }
+
+    .header-right {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+    }
+
+    .main-title {
+        font-size: 5.5rem;
+        padding: 0 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0 1rem;
+        margin-top: -3.5rem;
+        /* background-color: rgba(255, 0, 0, 0.2); */
+    }
+
+    .card-about {
+        width: 48%;
+        min-height: 150px;
+        order: 1;
+    }
+
+    .card-contact {
+        width: 48%;
+        min-height: 150px;
+        order: 2;
+    }
+
+    .card-portfolio {
+        width: 100%;
+        order: 0;
+    }
+
+    .icons-card,
+    .card-clients,
+    .card-resume {
+        width: 100%;
+        order: 3;
+    }
+
+    .contact-about-container {
+        display: contents;
+    }
+
+    .card-about, .card-portfolio, .card-contact, .icons-card, .card-resume, .card-clients {
+        grid-area: auto;
+    }
+
+    .card {
+        max-width: 100%;
+        margin: 0;
+        min-height: 200px;
+        padding: 1.5rem;
+    }
+
+    .card-inner {
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 0.9rem;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        bottom: 0.75rem;
+        left: 1rem;
+    }
+
+    .card-description {
+        font-size: 0.8rem;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        bottom: 0.25rem;
+        left: 1rem;
+    }
+
+    .card-icon {
+        top: 1rem;
+        right: 1.25rem;
+        font-size: 1rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .modal-content.portfolio-modal,
+    .modal-content.graphic-design-modal {
+        width: 95%;
+        height: auto;
+        max-height: 90vh;
+    }
+
+    .modal-content.contact-modal {
+        width: 95%;
+        height: auto;
+        max-height: 90vh;
+        padding: 1.5rem; /* Ensure consistent padding on mobile */
+    }
+
+    .portfolio-grid,
+    .graphic-design-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .clients-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .client-item {
+        padding: 1.5rem;
+    }
+
+    .client-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .client-item p {
+        font-size: 0.9rem;
+    }
+
+    .carousel-container {
+        height: 200px; /* Adjust height for smaller screens */
+    }
+
+    .carousel-image {
+        padding: 1rem; /* Adjust padding for smaller screens */
+    }
+
+    .carousel-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .carousel-dots {
+        bottom: 10px;
+    }
+}
+
+/* End Mobile Responsive Styles */

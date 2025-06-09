@@ -6,34 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalDescription = document.getElementById('modalDescription');
     const locationSpan = document.querySelector('.header-right .location');
 
-    // Function to update time and location
-    function updateLocationAndTime() {
+    // Function to update time
+    function updateTime() {
         const now = new Date();
         const options = { hour: '2-digit', minute: '2-digit', hour12: true };
         const formattedTime = now.toLocaleTimeString('en-US', options);
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const lat = position.coords.latitude.toFixed(2);
-                    const lon = position.coords.longitude.toFixed(2);
-                    locationSpan.textContent = `Lat: ${lat}, Lon: ${lon} • ${formattedTime}`;
-                },
-                (error) => {
-                    console.error('Error getting location:', error);
-                    locationSpan.textContent = `Location Unavailable • ${formattedTime}`;
-                }
-            );
-        } else {
-            locationSpan.textContent = `Geolocation Not Supported • ${formattedTime}`;
-        }
+        locationSpan.textContent = formattedTime;
     }
 
-    // Initial call to update location and time
-    updateLocationAndTime();
+    // Initial call to update time
+    updateTime();
 
-    // Update every minute (optional, if time needs to be live)
-    setInterval(updateLocationAndTime, 60000);
+    // Update every minute
+    setInterval(updateTime, 60000);
 
     const cardDetails = {
         'about': {
