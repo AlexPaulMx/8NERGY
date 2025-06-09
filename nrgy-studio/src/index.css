@@ -1,0 +1,1660 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  /* background-color: #000; */
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Estilos de App.css */
+.App-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* background-color: #000; */
+  color: #fff;
+  padding: 2.5rem 2.5rem 3rem 2.5rem;
+  box-sizing: border-box;
+  /* max-width: 1920px; */
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.overlay-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.99);
+  z-index: -1;
+}
+
+.main-title {
+  font-size: 11.5rem;
+  font-weight: 800;
+  line-height: 0.9;
+  margin: 2.5rem 0 2.5rem;
+  letter-spacing: -0.04em;
+  font-family: 'Inter', sans-serif;
+  padding: 0 2.5rem;
+  text-align: center;
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.35),
+    0 0 10px rgba(255, 255, 255, 0.25),
+    0 0 15px rgba(255, 255, 255, 0.15),
+    0px 2px 4px rgba(0, 0, 0, 0.8),
+    0px 4px 8px rgba(0, 0, 0, 0.6),
+    0px 6px 12px rgba(0, 0, 0, 0.4);
+  animation: glowingMetal 4s infinite alternate ease-in-out;
+}
+
+@keyframes glowingMetal {
+  0% {
+    text-shadow: 
+      0 0 5px rgba(255, 255, 255, 0.35),
+      0 0 10px rgba(255, 255, 255, 0.25),
+      0 0 15px rgba(255, 255, 255, 0.15),
+      0px 2px 4px rgba(0, 0, 0, 0.8),
+      0px 4px 8px rgba(0, 0, 0, 0.6),
+      0px 6px 12px rgba(0, 0, 0, 0.4);
+    filter: none;
+    color: #fff;
+  }
+  50% {
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.45),
+      0 0 20px rgba(255, 255, 255, 0.35),
+      0 0 30px rgba(255, 255, 255, 0.25),
+      0px 5px 10px rgba(0, 0, 0, 0.9),
+      0px 8px 16px rgba(0, 0, 0, 0.7),
+      0px 10px 20px rgba(0, 0, 0, 0.5);
+    filter: none;
+    color: #e0e0e0;
+  }
+  100% {
+    text-shadow: 
+      0 0 5px rgba(255, 255, 255, 0.35),
+      0 0 10px rgba(255, 255, 255, 0.25),
+      0 0 15px rgba(255, 255, 255, 0.15),
+      0px 2px 4px rgba(0, 0, 0, 0.8),
+      0px 4px 8px rgba(0, 0, 0, 0.6),
+      0px 6px 12px rgba(0, 0, 0, 0.4);
+    filter: none;
+    color: #fff;
+  }
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(250px, auto) minmax(250px, auto);
+  grid-template-areas:
+    "portfolio portfolio contact"
+    "about icons resume";
+  gap: 1.25rem;
+  width: 100%;
+  padding: 0 2.5rem;
+  margin-top: -4.5rem;
+}
+
+/* Asignar áreas de cuadrícula a las tarjetas */
+.card-about { grid-area: about; }
+.card-portfolio { grid-area: portfolio; }
+.card-contact { grid-area: contact; }
+/* .image-card { 
+  grid-area: image;
+  border-radius: 1.25rem; 
+} */
+.icons-card { grid-area: icons; 
+  display: flex; /* Ensure flexbox for centering content */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+.card-resume { grid-area: resume; }
+
+/* Estilos de Card.css */
+.card {
+  background-color: rgba(10, 10, 10, 0.4);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) brightness(1.1) contrast(1.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background-color: rgba(10, 10, 10, 0.4); /* Fondo base de la tarjeta */
+}
+
+.card-portfolio {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-portfolio::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.card-portfolio:hover::before {
+  left: 100%;
+}
+
+.card-portfolio .card-inner {
+  transition: transform 0.3s ease;
+}
+
+.card-portfolio:hover .card-inner {
+  transform: scale(1.05);
+}
+
+.card-portfolio .card-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.card-portfolio:hover .card-icon {
+  transform: rotate(15deg);
+  color: var(--accent-color);
+}
+
+.card-about::before,
+.card-about::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.card-about::before {
+  background: linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.1) 50%, transparent 52%);
+  background-size: 20px 20px;
+  transform: scale(0);
+}
+
+.card-about::after {
+  background: linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.1) 50%, transparent 52%);
+  background-size: 20px 20px;
+  transform: scale(0);
+}
+
+.card-about:hover::before,
+.card-about:hover::after {
+  opacity: 1;
+  transform: scale(1.5);
+  animation: aboutCrack 1s forwards;
+}
+
+@keyframes aboutCrack {
+  0% {
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  100% {
+    transform: scale(1.5) rotate(0deg);
+  }
+}
+
+/* Nuevo efecto para Contact */
+.card-contact::before,
+.card-contact::after,
+.card-contact .card-inner::before,
+.card-contact .card-inner::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.card-contact::before {
+  top: 20%;
+  left: 20%;
+}
+
+.card-contact::after {
+  top: 20%;
+  right: 20%;
+}
+
+.card-contact .card-inner::before {
+  bottom: 20%;
+  left: 20%;
+}
+
+.card-contact .card-inner::after {
+  bottom: 20%;
+  right: 20%;
+}
+
+.card-contact:hover::before,
+.card-contact:hover::after,
+.card-contact:hover .card-inner::before,
+.card-contact:hover .card-inner::after {
+  opacity: 1;
+  animation: connectDots 2s infinite ease-in-out;
+}
+
+.card-contact:hover::after {
+  animation-delay: 0.5s;
+}
+
+.card-contact:hover .card-inner::before {
+  animation-delay: 1s;
+}
+
+.card-contact:hover .card-inner::after {
+  animation-delay: 1.5s;
+}
+
+@keyframes connectDots {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.5);
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.2);
+  }
+}
+
+.card-about:hover {
+  transform: translateY(-8px) scale(1.02); /* Ligeramente más grande y arriba */
+  background-color: rgba(10, 10, 10, 0.3); /* Más transparente */
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.2); /* Resplandor exterior e interior */
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.icons-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 0, 0, 0.3),
+    rgba(255, 165, 0, 0.3),
+    rgba(255, 255, 0, 0.3),
+    rgba(0, 255, 0, 0.3),
+    rgba(0, 0, 255, 0.3),
+    rgba(75, 0, 130, 0.3),
+    rgba(238, 130, 238, 0.3),
+    rgba(255, 0, 0, 0.3)
+  );
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.icons-card:hover::before {
+  width: 200%;
+  height: 200%;
+  opacity: 1;
+  animation: rotatePalette 4s linear infinite;
+}
+
+@keyframes rotatePalette {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.card-resume .card-title {
+  position: relative;
+  overflow: hidden; /* Para contener el efecto de brillo */
+}
+
+.card-resume .card-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* Empieza fuera del texto */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent); /* Línea de brillo */
+  transition: left 0.5s ease-out;
+}
+
+.card-resume:hover .card-title::before {
+  left: 100%; /* Se mueve a través del texto */
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  background-color: rgba(0, 0, 0, 0.5); /* Más oscuro al pasar el mouse */
+  border-color: rgba(255, 255, 255, 0.3); /* Borde más visible */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Mantener la sombra principal */
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+}
+
+.card-inner {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #fff;
+  letter-spacing: -0.01em;
+  text-align: left;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+.card-content {
+  display: none;
+}
+
+.card-link-icon {
+  display: none;
+}
+
+.card-icon {
+  position: absolute;
+  top: 1.5rem; /* Ajusta la posición vertical */
+  right: 1.75rem; /* Ajusta la posición horizontal al lado derecho */
+  left: auto; /* Elimina la propiedad left */
+  font-size: 1.4rem; /* Haz el icono más pequeño */
+  color: #888; /* Color gris suave */
+  transition: color 0.2s ease;
+}
+
+.card:hover .card-icon {
+  color: #fff; /* Cambia a blanco al pasar el mouse */
+}
+
+/* Estilos de Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 2.5rem;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.header-left {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.title, .location {
+  color: #666;
+}
+
+.header-right {
+  color: #666;
+}
+
+/* Estilos de NoiseBackground.css */
+.noise-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.noise {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: noise 0.5s steps(2) infinite;
+}
+
+@keyframes noise {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -5%);
+  }
+  20% {
+    transform: translate(-10%, 5%);
+  }
+  30% {
+    transform: translate(5%, -10%);
+  }
+  40% {
+    transform: translate(-5%, 15%);
+  }
+  50% {
+    transform: translate(-10%, 5%);
+  }
+  60% {
+    transform: translate(15%, 0);
+  }
+  70% {
+    transform: translate(0, 10%);
+  }
+  80% {
+    transform: translate(3%, 15%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
+  100% {
+    transform: translate(5%, 5%);
+  }
+}
+
+/* Estilos del Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+}
+
+.modal-overlay.active {
+  display: flex;
+  opacity: 1;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  background-color: var(--card-bg);
+  margin: auto;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 90%;
+  width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0);
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+.close-button:hover {
+  color: var(--accent-color);
+}
+
+.modal-title {
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.modal-description {
+  color: var(--text-color);
+}
+
+/* Estilos para el nuevo contenido del modal About */
+.about-modal-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto; /* Habilitar scroll para todo el contenido si es necesario */
+}
+
+.about-intro-text {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.about-highlight-text {
+  color: #999;
+}
+
+.about-secondary-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #bbb;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.about-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.about-image-container img {
+  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.services-section {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+
+.services-section h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  text-align: left;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-item {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+.service-item:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+.service-item h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.service-item p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #bbb;
+}
+
+.skills-section {
+  margin-top: 3rem;
+}
+
+.skills-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.skill-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}
+
+.skill-item span {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+/* Estilos para el modal de Work Experience */
+.work-experience-modal-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.experience-section {
+  margin-bottom: 2rem;
+}
+
+.experience-item {
+  display: grid;
+  grid-template-columns: 150px 200px 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.experience-year {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.experience-role {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.experience-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+.about-intro-text p,
+.about-secondary-text p {
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease, font-weight 0.3s ease;
+  cursor: pointer;
+}
+
+.about-intro-text p:hover,
+.about-secondary-text p:hover {
+  color: #fff;
+  transform: scale(1.05);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+}
+
+/* Estilos del Footer Credit */
+.footer-credit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-center {
+  flex: 1;
+  text-align: center;
+}
+
+.social-icons-footer {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons-footer a {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons-footer a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.about-credit {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 1.5rem;
+}
+
+/* Estilos para el modal de Portafolio */
+.portfolio-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.portfolio-header-text {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: #fff;
+  text-align: left;
+  padding-left: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.portfolio-item {
+  background-color: rgba(10, 10, 10, 0.4);
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) brightness(1.1) contrast(1.1);
+  box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.37);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  aspect-ratio: 4 / 3;
+  height: 100%;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-4px);
+  background-color: rgba(17, 17, 17, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.portfolio-item img,
+.portfolio-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover img,
+.portfolio-item:hover video {
+  transform: scale(1.02);
+}
+
+.portfolio-item .item-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000; /* Solid black background */
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: #fff;
+  pointer-events: none;
+}
+
+.portfolio-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.portfolio-category {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+}
+
+/* Ensure the modal content expands as needed */
+.modal-content.portfolio-modal {
+  width: 80vw;
+  max-width: 1200px;
+  height: 80vh;
+  max-height: 80vh;
+}
+
+/* Estilos para el modal de Contacto */
+.contact-modal-content {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */ /* Removed for form alignment */
+  /* text-align: center; */ /* Removed for form alignment */
+  gap: 1.5rem;
+  padding: 2rem;
+  height: 100%;
+  /* justify-content: center; */ /* Removed for form alignment */
+}
+
+.contact-header-text {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: #fff;
+  margin-bottom: 2rem; /* Adjusted margin */
+  text-align: center; /* Aligned to left */
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 500;
+  margin-left: 0.25rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group input[type="email"]::placeholder,
+.form-group textarea::placeholder {
+  color: #888;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-section-header-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.form-section-header {
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  margin-left: 0.25rem;
+}
+
+.form-options-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.checkbox-group,
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Custom Checkbox/Radio Styles */
+.checkbox-container,
+.radio-container {
+  display: block;
+  position: relative;
+  padding-left: 1.75rem; /* Space for the custom checkbox */
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #ccc;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+}
+
+.checkbox-container input,
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark,
+.radio-checkmark {
+  position: absolute;
+  top: 0; /* Align with text baseline */
+  left: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+/* Round radio buttons */
+.radio-checkmark {
+  border-radius: 50%;
+}
+
+.checkbox-container:hover input ~ .checkmark,
+.radio-container:hover input ~ .radio-checkmark {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.checkbox-container input:checked ~ .checkmark,
+.radio-container input:checked ~ .radio-checkmark {
+  background-color: #007bff; /* Accent color */
+  border-color: #007bff;
+}
+
+/* Checkmark icon (for checkboxes) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkmark:after {
+  left: 0.4rem;
+  top: 0.2rem;
+  width: 0.3rem;
+  height: 0.6rem;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* Inner dot for radio buttons */
+.radio-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: white;
+  transform: translate(-50%, -50%);
+}
+
+.radio-container input:checked ~ .radio-checkmark:after {
+  display: block;
+}
+
+.submit-button {
+  background-color: rgba(255, 255, 255, 0.1); /* Light background for glassmorphism */
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1.5rem;
+  align-self: flex-start; /* Align to left */
+}
+
+.submit-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.spot-available {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #ccc;
+  margin-top: 1.5rem;
+  align-self: flex-start; /* Align to left */
+}
+
+.spot-available .dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: #8aff8a; /* Green dot */
+  border-radius: 50%;
+}
+
+/* New styles for alternative contact and social buttons */
+.contact-alternative-text {
+  font-size: 0.95rem;
+  color: #ccc;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+.contact-social-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.social-button:hover {
+  transform: translateY(-2px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.whatsapp-button {
+  background-color: #25D366;
+  border-color: #25D366;
+  color: white;
+}
+
+.whatsapp-button:hover {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}
+
+.mail-button {
+  background-color: #D44638; /* Gmail red */
+  border-color: #D44638;
+  color: white;
+}
+
+.mail-button:hover {
+  background-color: #B8372C;
+  border-color: #B8372C;
+}
+
+.telegram-button {
+  background-color: #0088CC;
+  border-color: #0088CC;
+  color: white;
+}
+
+.telegram-button:hover {
+  background-color: #006AA0;
+  border-color: #006AA0;
+}
+
+/* Ensure the modal content expands as needed */
+.modal-content.contact-modal {
+  width: 55vw; /* Slightly increased width */
+  max-width: 900px; /* Adjusted max-width */
+  height: auto; /* Allow height to adjust to content */
+  max-height: 90vh; /* Prevent it from exceeding viewport height */
+  padding: 0;
+}
+
+.clients-modal-content {
+    padding: 2rem;
+    color: #fff;
+}
+
+.clients-header-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.client-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.client-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.client-item h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.client-item p {
+    font-size: 1rem;
+    color: #888;
+    margin: 0;
+}
+
+.graphic-design-modal-content {
+  padding: 2rem;
+  color: #fff;
+}
+
+.graphic-design-header-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.graphic-design-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.graphic-design-item {
+  background-color: rgba(10, 10, 10, 0.4);
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) brightness(1.1) contrast(1.1);
+  box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.37);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  aspect-ratio: 4 / 3; /* Asegura el mismo tamaño que las tarjetas de portfolio */
+  height: 100%;
+}
+
+.graphic-design-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Color del overlay */
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.graphic-design-item:hover::before {
+  opacity: 1;
+}
+
+.graphic-design-item:hover {
+  transform: translateY(-4px);
+  background-color: rgba(17, 17, 17, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.graphic-design-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+  position: relative; /* Asegura que la imagen esté debajo del overlay */
+  z-index: 0;
+}
+
+.graphic-design-item:hover img {
+  transform: scale(1.02);
+}
+
+.graphic-design-item .item-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo del detalle */
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: #fff;
+  pointer-events: none;
+  opacity: 0; /* Ocultar inicialmente */
+  transition: opacity 0.3s ease;
+  z-index: 2; /* Asegura que el texto esté sobre el overlay */
+}
+
+.graphic-design-item:hover .item-details {
+  opacity: 1; /* Mostrar al pasar el mouse */
+}
+
+.graphic-design-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.graphic-design-category {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+}
+
+/* Ensure the modal content expands as needed */
+.modal-content.graphic-design-modal {
+  width: 80vw;
+  max-width: 1200px;
+  height: 80vh;
+  max-height: 80vh;
+}
+
+/* Nuevo efecto para Clients */
+.card-resume::before {
+  content: '©';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-size: 8rem;
+  color: rgba(255, 255, 255, 0.03);
+  font-family: 'Arial', sans-serif;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.card-resume:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  animation: copyrightReveal 1s ease-out forwards;
+}
+
+@keyframes copyrightReveal {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2) rotate(0deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Clients Modal Carousel Styles */
+.clients-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.clients-header-text {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.carousel-slide-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    display: none;
+    object-fit: contain;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.carousel-image:first-child {
+    display: block;
+}
+
+.carousel-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    cursor: pointer;
+    height: 8px;
+    width: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.dot.active,
+.dot:hover {
+    background-color: #fff;
+    transform: scale(1.2);
+}
+
+/* End Clients Modal Carousel Styles */
+
+/* Clients Card Carousel Styles */
+.card-clients {
+    overflow: hidden;
+}
+
+.card-clients .card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    height: 100%;
+}
+
+.card-clients .card-icon {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.clients-carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.clients-track {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    width: fit-content;
+    align-items: center;
+    height: 100%;
+}
+
+.clients-track:hover {
+    animation-play-state: paused;
+}
+
+.client-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    margin: 0 1.5rem;
+    filter: grayscale(100%) brightness(1.2);
+    transition: filter 0.3s ease;
+}
+
+.client-logo:hover {
+    filter: grayscale(0%) brightness(1);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* End Clients Card Carousel Styles */
+
+/* Card Hover Effects */
+.card#graphicDesign {
+    opacity: 0.7;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.card#graphicDesign::after {
+    content: 'Coming Soon';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card#graphicDesign:hover::after {
+    opacity: 1;
+}
+
+.card#graphicDesign .card-inner {
+    pointer-events: none;
+}
+
+/* End Card Hover Effects */
