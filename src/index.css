@@ -160,6 +160,7 @@ a {
   justify-content: flex-end;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   background-color: rgba(10, 10, 10, 0.4); /* Fondo base de la tarjeta */
+  min-height: 237.5px; /* Reduced by 5% from 250px */
 }
 
 .card-portfolio {
@@ -1765,7 +1766,7 @@ a {
     .card {
         max-width: 100%;
         margin: 0;
-        min-height: 200px;
+        min-height: 190px; /* Reduced by 5% from 200px */
         padding: 1.5rem;
     }
 
