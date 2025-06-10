@@ -6,13 +6,14 @@
     <title>Curriculum Vitae - Alejandro Rach</title>
     <link rel="stylesheet" href="/src/index.css"> <!-- Re-use main styles for general appearance -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --background-color-main: #000; /* From src/index.css body */
             --text-color-main: #fff; /* From src/index.css body */
             --card-background-color: rgba(10, 10, 10, 0.4); /* From src/index.css .card */
             --card-border-color: rgba(255, 255, 255, 0.08); /* From src/index.css .card */
-            --accent-color: #28a745; /* A professional green */
+            --accent-color: #888; /* A professional grey */
         }
 
         body {
@@ -225,6 +226,10 @@
 
         /* Print styles */
         @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
             body {
                 font-family: 'Inter', sans-serif;
                 color: #000;
@@ -235,11 +240,11 @@
             .cv-container {
                 display: grid;
                 grid-template-columns: 1fr 2.5fr;
-                gap: 1.5cm;
+                gap: 1cm;
                 max-width: 21cm;
                 min-height: 29.7cm;
                 margin: 0.5cm auto;
-                padding: 1.5cm;
+                padding: 1cm;
                 border: 1px solid #ccc;
                 box-shadow: none;
                 background-color: #fff;
@@ -247,39 +252,61 @@
             }
             .cv-sidebar {
                 background-color: #f8f8f8;
-                padding: 1rem;
+                padding: 0.75rem;
                 border-right: 1px solid #eee;
-                border-bottom: none;
             }
             .cv-sidebar h2 {
-                color: #000;
-                border-bottom: 1px solid #ddd;
+                font-size: 1.1em;
+                margin-bottom: 0.5rem;
+                padding-bottom: 0.1rem;
             }
-            .cv-sidebar ul li strong {
-                color: #000;
+            .cv-sidebar ul {
+                margin-bottom: 0.75rem;
             }
-            .skill-item {
-                background-color: #e0e0e0;
-                border-color: #ccc;
-                color: #000;
+            .cv-sidebar ul li {
+                margin-bottom: 0.3em;
+                font-size: 0.9em;
             }
-            .cv-main-content h1,
-            .cv-main-content .tagline,
-            .cv-section h2,
-            .cv-subsection h3,
-            .cv-subsection .sub-info,
-            .cv-subsection p,
-            .cv-subsection ul li {
-                color: #000;
+            .cv-main-content {
+                padding-left: 1.5cm;
+                padding-top: 0;
+            }
+            .cv-main-content h1 {
+                font-size: 2em;
+                margin-bottom: 0.3rem;
+            }
+            .cv-main-content .tagline {
+                font-size: 1em;
+                margin-bottom: 1.5rem;
             }
             .cv-section {
-                border-bottom-color: #eee;
+                margin-bottom: 1.5rem;
+                padding-bottom: 1rem;
             }
             .cv-section h2 {
-                border-bottom-color: #ccc;
+                font-size: 1.4em;
+                margin-bottom: 0.8rem;
+                padding-bottom: 0.4rem;
             }
-            .cv-subsection ul li::before {
-                color: #000;
+            .cv-subsection h3 {
+                font-size: 1.1em;
+                margin-bottom: 0.3rem;
+            }
+            .cv-subsection .sub-info {
+                font-size: 0.8em;
+                margin-bottom: 0.5rem;
+            }
+            .cv-subsection p {
+                font-size: 0.9em;
+                margin-bottom: 0.8rem;
+            }
+            .cv-subsection ul li {
+                margin-bottom: 0.5em;
+                font-size: 0.9em;
+            }
+            .skills-grid .skill-item {
+                font-size: 0.8em;
+                padding: 0.3rem 0.6rem;
             }
         }
     </style>
@@ -287,46 +314,57 @@
 <body>
     <div class="cv-container">
         <aside class="cv-sidebar">
-            <img src="path/to/your/profile.jpg" alt="Profile Picture" style="width:100%; border-radius:8px; margin-bottom:1.5rem;">
+            <div class="cv-image-container">
+                <img src="https://i.ibb.co/hKbhX50/Alejandro-Rach.png" alt="Alejandro Rach" class="cv-image">
+            </div>
 
-            <h2>Contact</h2>
-            <ul>
-                <li><strong>Email:</strong> your-email@example.com</li>
-                <li><strong>Phone:</strong> +123 456 7890</li>
-                <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></li>
-                <li><strong>Portfolio:</strong> <a href="https://yourportfolio.com" target="_blank">yourportfolio.com</a></li>
-            </ul>
+            <div class="cv-section">
+                <h2>Contact</h2>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> rachaudiovisuals@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +52 867 298 92 49</li>
+                    <li><i class="fas fa-globe"></i> <a href="https://www.8nergy.xyz" target="_blank">www.8nergy.xyz</a></li>
+                </ul>
+            </div>
 
             <h2>Skills</h2>
-            <div class="skills-grid">
-                <span class="skill-item">UX/UI Design</span>
-                <span class="skill-item">HTML/CSS</span>
-                <span class="skill-item">JavaScript</span>
-                <span class="skill-item">React</span>
-                <span class="skill-item">TypeScript</span>
-                <span class="skill-item">Node.js</span>
-                <span class="skill-item">Graphic Design</span>
-                <span class="skill-item">3D Modeling</span>
-                <span class="skill-item">Mechanical Design</span>
-                <span class="skill-item">Motion Graphics</span>
-                <span class="skill-item">Programming</span>
-                <span class="skill-item">Project Management</span>
-                <span class="skill-item">Multimedia Editing</span>
-            </div>
+            <ul>
+                <li>Graphic Design</li>
+                <li>UX/UI Design (Web Design)</li>
+                <li>3D Modeling</li>
+                <li>Mechanical Design</li>
+                <li>Motion Graphics</li>
+                <li>Programming (Python, JavaScript, C++)</li>
+                <li>Web Development (HTML, CSS, React)</li>
+                <li>Database Management (SQL, NoSQL)</li>
+                <li>Project Management</li>
+            </ul>
 
             <h2>Software</h2>
             <div class="skills-grid">
-                <span class="skill-item">Figma</span>
-                <span class="skill-item">Photoshop</span>
-                <span class="skill-item">Illustrator</span>
-                <span class="skill-item">Blender</span>
-                <span class="skill-item">After Effects</span>
-                <span class="skill-item">Premiere Pro</span>
-                <span class="skill-item">AutoCAD</span>
-                <span class="skill-item">SolidWorks</span>
-                <span class="skill-item">Fusion 360</span>
-                <span class="skill-item">VS Code</span>
-                <span class="skill-item">Cursor</span>
+                <div class="skill-item">Photoshop</div>
+                <div class="skill-item">Illustrator</div>
+                <div class="skill-item">InDesign</div>
+                <div class="skill-item">Premiere Pro</div>
+                <div class="skill-item">After Effects</div>
+                <div class="skill-item">Figma</div>
+                <div class="skill-item">SolidWorks</div>
+                <div class="skill-item">AutoCAD</div>
+                <div class="skill-item">Blender</div>
+                <div class="skill-item">Keyshot</div>
+                <div class="skill-item">Git</div>
+                <div class="skill-item">VS Code</div>
+                <div class="skill-item">Docker</div>
+                <div class="skill-item">Kubernetes</div>
+                <div class="skill-item">Cursor</div>
+            </div>
+
+            <div class="cv-section">
+                <h2>Languages</h2>
+                <ul>
+                    <li>English: Native</li>
+                    <li>Spanish: Native</li>
+                </ul>
             </div>
         </aside>
 
@@ -336,7 +374,7 @@
 
             <div class="cv-section">
                 <h2>About Me</h2>
-                <p>8nergy© is a multi-disciplinary creative studio dedicated to crafting immersive and engaging product experiences and technologies. Our work is defined by a commitment to clarity, consistency, and meticulous attention to detail, ensuring that every project authentically resonates with its audience. We believe in the power of design to transform ideas into impactful experiences. Our approach combines technical expertise with creative vision to deliver solutions that not only meet but exceed expectations.</p>
+                <p>I'm a multi-disciplinary engineer dedicated to create immersive and engaging product experiences and technologies. Our work is defined by a commitment to clarity, consistency, and meticulous attention to detail, ensuring that every project authentically resonates with its audience.</p>
             </div>
 
             <div class="cv-section">
@@ -364,16 +402,8 @@
             <div class="cv-section">
                 <h2>Education</h2>
                 <div class="cv-subsection">
-                    <h3>[Your Degree] in [Your Field]</h3>
-                    <span class="sub-info">[University Name], [Graduation Year]</span>
-                    <ul>
-                        <li>Relevant coursework: [List relevant courses]</li>
-                        <li>Awards/Honors: [List any achievements]</li>
-                    </ul>
-                </div>
-                <div class="cv-subsection">
-                    <h3>Mechatronical Engineer</h3>
-                    <span class="sub-info">UT Nuevo Laredo, 2010-2013</span>
+                    <h3>Mechatronical Engineer at UT Nuevo Laredo</h3>
+                    <span class="sub-info">2010-2013</span>
                     <ul>
                         <li>Understanding of mechanical, electrical, control, programming, and software engineering.</li>
                         <li>Understanding of mechanical design, materials science, and manufacturing processes.</li>
@@ -381,8 +411,8 @@
                     </ul>
                 </div>
                 <div class="cv-subsection">
-                    <h3>IT Technician</h3>
-                    <span class="sub-info">Cbtis 137, 2014-2018</span>
+                    <h3>IT Technician at Cbtis 137</h3>
+                    <span class="sub-info">2014-2018</span>
                     <ul>
                         <li>Problem solving, updates, and repairs on computers, servers, and networks.</li>
                         <li>Programming and designing applications.</li>
@@ -391,13 +421,6 @@
                 </div>
             </div>
         </main>
-    </div>
-    <div class="cv-section">
-        <h2>Languages</h2>
-        <ul>
-            <li><strong>English:</strong> B2</li>
-            <li><strong>Spanish:</strong> Native</li>
-        </ul>
     </div>
 </body>
 </html> 
