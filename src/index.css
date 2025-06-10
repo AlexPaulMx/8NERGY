@@ -189,11 +189,6 @@ a {
   justify-content: flex-end;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   background-color: rgba(10, 10, 10, 0.4); /* Fondo base de la tarjeta */
-  z-index: 1;
-}
-
-.card * {
-  pointer-events: none;
 }
 
 .card-portfolio {
@@ -581,15 +576,13 @@ a {
   -webkit-backdrop-filter: blur(0px);
   justify-content: center;
   align-items: center;
-  pointer-events: none;
 }
 
 .modal-overlay.active {
-  display: flex !important;
+  display: flex;
   opacity: 1;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  pointer-events: auto;
 }
 
 .modal-content {
@@ -607,8 +600,7 @@ a {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-sizing: border-box;
-  pointer-events: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .modal-overlay.active .modal-content {

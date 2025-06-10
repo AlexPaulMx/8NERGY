@@ -12,15 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cvCloseButton = cvModal ? cvModal.querySelector('.close-button') : null;
     const cvContent = cvModal ? cvModal.querySelector('.cv-content') : null;
 
-    // Verificar que los elementos críticos existan
-    if (!modal || !closeButton || !modalTitle || !modalDescription) {
-        console.error('Elementos críticos del modal no encontrados');
-        return;
-    }
-
     // Function to update time
     function updateTime() {
-        if (!locationSpan) return;
         const now = new Date();
         const options = { hour: '2-digit', minute: '2-digit', hour12: true };
         const formattedTime = now.toLocaleTimeString('en-US', options);
@@ -32,6 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update every minute
     setInterval(updateTime, 60000);
+
+    // Ensure modal is properly initialized
+    if (modal) {
+        modal.style.display = 'none';
+    }
 
     const cardDetails = {
         'about': {
@@ -337,67 +335,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Función para inicializar el modal
-    function initializeModal() {
-        // Add click event listeners to cards
-        cards.forEach(card => {
-            card.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const cardId = this.id;
-                console.log('Card clicked:', cardId); // Debug log
-                
-                // Skip modal for Graphic Design card
-                if (cardId === 'graphicDesign') {
-                    return;
-                }
-                
-                if (cardDetails[cardId]) {
-                    modalTitle.textContent = cardDetails[cardId].title;
-                    modalDescription.innerHTML = cardDetails[cardId].description;
-                    modal.style.display = 'flex';
-                    requestAnimationFrame(() => {
-                        modal.classList.add('active');
-                    });
-                }
-            });
-        });
-
-        // Close modal when clicking the close button
-        closeButton.addEventListener('click', function(e) {
+    // Add click event listeners to cards
+    cards.forEach(card => {
+        card.addEventListener('click', (e) => {
             e.preventDefault();
-            e.stopPropagation();
+            const cardId = card.id;
+            // Skip modal for Graphic Design card
+            if (cardId === 'graphicDesign') {
+                return;
+            }
+            if (cardDetails[cardId]) {
+                modalTitle.textContent = cardDetails[cardId].title;
+                modalDescription.innerHTML = cardDetails[cardId].description;
+                modal.style.display = 'flex';
+                modal.classList.add('active');
+            }
+        });
+    });
+
+    // Close modal when clicking the close button
+    if (closeButton) {
+        closeButton.addEventListener('click', () => {
             modal.classList.remove('active');
             setTimeout(() => {
                 modal.style.display = 'none';
-            }, 300);
+            }, 300); // Wait for transition to complete
         });
+    }
 
-        // Close modal when clicking outside
-        modal.addEventListener('click', function(e) {
+    // Close modal when clicking outside
+    if (modal) {
+        modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.classList.remove('active');
                 setTimeout(() => {
                     modal.style.display = 'none';
-                }, 300);
+                }, 300); // Wait for transition to complete
             }
         });
-
-        // Prevent clicks inside modal content from closing the modal
-        modal.querySelector('.modal-content').addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
     }
-
-    // Esperar a que el DOM esté completamente cargado
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeModal);
-    } else {
-        initializeModal();
-    }
-
-    // También inicializar cuando la ventana se carga completamente
-    window.addEventListener('load', initializeModal);
 
     // Handle video playback on hover for portfolio items
     modal.addEventListener('DOMSubtreeModified', () => {
