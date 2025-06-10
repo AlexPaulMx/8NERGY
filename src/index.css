@@ -1740,13 +1740,13 @@ a {
     }
 
     .card-about {
-        width: 48%;
+        width: calc(50% - 0.5rem); /* Adjusted width to fit side-by-side with gap */
         min-height: 150px;
         order: 1;
     }
 
     .card-contact {
-        width: 48%;
+        width: calc(50% - 0.5rem); /* Adjusted width to fit side-by-side with gap */
         min-height: 150px;
         order: 2;
     }

@@ -224,6 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         <div class="form-section-header-group">
                             <span class="form-section-header">What's Your Project About?</span>
+                            <span class="form-section-header">Project Budget</span>
                         </div>
                         
                         <div class="form-options-group">
@@ -259,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                            <span class="form-section-header">Project Budget</span>
+
                             <div class="radio-group">
                                 <label class="radio-container">
                                     $1k - $5k
