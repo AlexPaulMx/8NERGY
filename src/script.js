@@ -337,41 +337,67 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Add click event listeners to cards
-    cards.forEach(card => {
-        card.addEventListener('click', (e) => {
-            e.preventDefault();
-            const cardId = card.id;
-            // Skip modal for Graphic Design card
-            if (cardId === 'graphicDesign') {
-                return;
-            }
-            if (cardDetails[cardId]) {
-                modalTitle.textContent = cardDetails[cardId].title;
-                modalDescription.innerHTML = cardDetails[cardId].description;
-                modal.style.display = 'flex'; // Asegurar que el modal sea visible
-                modal.classList.add('active');
-            }
+    // Función para inicializar el modal
+    function initializeModal() {
+        // Add click event listeners to cards
+        cards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const cardId = this.id;
+                console.log('Card clicked:', cardId); // Debug log
+                
+                // Skip modal for Graphic Design card
+                if (cardId === 'graphicDesign') {
+                    return;
+                }
+                
+                if (cardDetails[cardId]) {
+                    modalTitle.textContent = cardDetails[cardId].title;
+                    modalDescription.innerHTML = cardDetails[cardId].description;
+                    modal.style.display = 'flex';
+                    requestAnimationFrame(() => {
+                        modal.classList.add('active');
+                    });
+                }
+            });
         });
-    });
 
-    // Close modal when clicking the close button
-    closeButton.addEventListener('click', () => {
-        modal.classList.remove('active');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300); // Esperar a que termine la transición
-    });
-
-    // Close modal when clicking outside
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
+        // Close modal when clicking the close button
+        closeButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             modal.classList.remove('active');
             setTimeout(() => {
                 modal.style.display = 'none';
-            }, 300); // Esperar a que termine la transición
-        }
-    });
+            }, 300);
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        // Prevent clicks inside modal content from closing the modal
+        modal.querySelector('.modal-content').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
+
+    // Esperar a que el DOM esté completamente cargado
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeModal);
+    } else {
+        initializeModal();
+    }
+
+    // También inicializar cuando la ventana se carga completamente
+    window.addEventListener('load', initializeModal);
 
     // Handle video playback on hover for portfolio items
     modal.addEventListener('DOMSubtreeModified', () => {
