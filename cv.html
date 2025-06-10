@@ -5,27 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curriculum Vitae - Alejandro Rach</title>
     <link rel="stylesheet" href="/src/index.css"> <!-- Re-use main styles for general appearance -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #007bff; /* A clean, modern blue */
-            --text-color-dark: #333;
-            --text-color-light: #f8f8f8;
-            --background-dark: #121212; /* Even darker background for screen */
-            --card-background-dark: #1e1e1e;
-            --border-color-light: #eee;
-            --border-color-dark: #333;
-            --accent-color: #007bff;
+            --background-color-main: #000; /* From src/index.css body */
+            --text-color-main: #fff; /* From src/index.css body */
+            --card-background-color: rgba(10, 10, 10, 0.4); /* From src/index.css .card */
+            --card-border-color: rgba(255, 255, 255, 0.08); /* From src/index.css .card */
+            --accent-color: #3498db; /* A custom accent color that can be adjusted */
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            color: var(--text-color-light);
-            background-color: var(--background-dark);
+            color: var(--text-color-main);
+            background-color: var(--background-color-main);
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .cv-container {
@@ -33,11 +32,13 @@
             flex-direction: column; /* Stack columns on mobile */
             max-width: 900px;
             margin: 2rem auto;
-            background-color: var(--card-background-dark);
-            border-radius: 8px;
+            background-color: var(--card-background-color);
+            border-radius: 1.25rem; /* From src/index.css .card */
             padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* From src/index.css .card */
+            backdrop-filter: blur(12px) brightness(1.1) contrast(1.1); /* From src/index.css .card */
             overflow: hidden; /* For rounded corners */
+            border: 1px solid var(--card-border-color); /* From src/index.css .card */
         }
 
         @media (min-width: 768px) {
@@ -51,28 +52,28 @@
 
         /* Sidebar styles */
         .cv-sidebar {
-            background-color: transparent; /* No background for minimalist look */
-            padding-right: 1.5rem; /* Add padding for separation on desktop */
-            padding-bottom: 2rem; /* Add padding for separation on mobile */
-            border-right: none; /* No border for minimalist look */
-            border-bottom: 1px solid var(--border-color-dark); /* Subtle separator on mobile */
+            background-color: transparent;
+            padding-right: 1.5rem;
+            padding-bottom: 2rem;
+            border-right: none;
+            border-bottom: 1px solid var(--card-border-color); /* Subtle separator on mobile */
         }
 
         @media (min-width: 768px) {
             .cv-sidebar {
-                border-right: 1px solid var(--border-color-dark); /* Subtle separator on desktop */
+                border-right: 1px solid var(--card-border-color); /* Subtle separator on desktop */
                 border-bottom: none;
                 padding-bottom: 0;
             }
         }
 
         .cv-sidebar h2 {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 500;
-            font-size: 1.2em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700; /* Bold for section titles */
+            font-size: 1.3em; /* Slightly larger for emphasis */
             color: var(--accent-color);
             margin-bottom: 0.8rem;
-            border-bottom: none; /* No border for minimalist look */
+            border-bottom: none;
             padding-bottom: 0.2rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -86,13 +87,13 @@
 
         .cv-sidebar ul li {
             margin-bottom: 0.5rem;
-            font-size: 0.9em;
-            color: #ccc;
+            font-size: 0.95em;
+            color: var(--text-color-main);
         }
 
         .cv-sidebar ul li strong {
             color: var(--accent-color);
-            font-weight: 400;
+            font-weight: 600;
         }
         .cv-sidebar ul li a {
             color: inherit;
@@ -100,7 +101,7 @@
             transition: color 0.2s ease-in-out;
         }
         .cv-sidebar ul li a:hover {
-            color: var(--primary-color);
+            color: var(--accent-color);
         }
 
         .skills-grid {
@@ -110,39 +111,46 @@
         }
 
         .skill-item {
-            background-color: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 4px;
-            padding: 0.3rem 0.7rem;
-            font-size: 0.8em;
-            color: #f0f0f0;
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 0.5rem; /* From src/index.css skill-item */
+            padding: 0.4rem 0.8rem; /* Adjusted padding */
+            font-size: 0.85em;
+            color: var(--text-color-main);
             white-space: nowrap;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .skill-item:hover {
+            background-color: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.3);
         }
 
         /* Main content styles */
         .cv-main-content {
             padding-left: 0;
-            padding-top: 1.5rem; /* Add padding for separation on mobile */
+            padding-top: 1.5rem;
         }
 
         @media (min-width: 768px) {
             .cv-main-content {
-                padding-left: 2.5rem; /* Add padding for separation on desktop */
+                padding-left: 2.5rem;
                 padding-top: 0;
             }
         }
 
         .cv-main-content h1 {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700;
-            font-size: 2.5em;
-            color: var(--text-color-light);
+            font-family: 'Inter', sans-serif;
+            font-weight: 800; /* Similar to main-title weight */
+            font-size: 2.8em; /* Slightly adjusted size */
+            color: var(--text-color-main);
             margin-bottom: 0.5rem;
             line-height: 1.1;
+            letter-spacing: -0.04em;
         }
 
         .cv-main-content .tagline {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1.1em;
             color: var(--accent-color);
             margin-bottom: 2rem;
@@ -152,7 +160,7 @@
         .cv-section {
             margin-bottom: 2.5rem;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color-dark);
+            border-bottom: 1px solid var(--card-border-color);
         }
 
         .cv-section:last-child {
@@ -161,22 +169,22 @@
         }
 
         .cv-section h2 {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700; /* Bold for section titles */
             font-size: 1.6em;
             color: var(--accent-color);
             margin-bottom: 1rem;
-            border-bottom: 2px solid var(--border-color-dark);
+            border-bottom: 2px solid var(--card-border-color);
             padding-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .cv-subsection h3 {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600; /* Slightly less bold than h2 */
             font-size: 1.2em;
-            color: var(--text-color-light);
+            color: var(--text-color-main);
             margin-bottom: 0.4rem;
         }
 
@@ -194,7 +202,7 @@
         }
 
         .cv-subsection ul {
-            list-style: none; /* No bullets for minimalist look */
+            list-style: none;
             padding: 0;
             margin-left: 0;
         }
@@ -202,13 +210,13 @@
         .cv-subsection ul li {
             position: relative;
             margin-bottom: 0.6em;
-            padding-left: 1.2em; /* Space for custom bullet */
+            padding-left: 1.2em;
             color: #ccc;
             font-size: 0.95em;
         }
 
         .cv-subsection ul li::before {
-            content: '–'; /* Custom bullet point */
+            content: '–';
             position: absolute;
             left: 0;
             color: var(--accent-color);
@@ -218,24 +226,24 @@
         /* Print styles */
         @media print {
             body {
-                font-family: 'Open Sans', sans-serif;
-                color: var(--text-color-dark);
+                font-family: 'Inter', sans-serif;
+                color: #000;
                 background-color: #fff;
                 margin: 0;
                 padding: 0;
             }
             .cv-container {
                 display: grid;
-                grid-template-columns: 1fr 2.5fr; /* Force two columns for print */
+                grid-template-columns: 1fr 2.5fr;
                 gap: 1.5cm;
-                max-width: 21cm; /* A4 width */
-                min-height: 29.7cm; /* A4 height */
+                max-width: 21cm;
+                min-height: 29.7cm;
                 margin: 0.5cm auto;
                 padding: 1.5cm;
                 border: 1px solid #ccc;
                 box-shadow: none;
                 background-color: #fff;
-                color: var(--text-color-dark);
+                color: #000;
             }
             .cv-sidebar {
                 background-color: #f8f8f8;
@@ -244,16 +252,16 @@
                 border-bottom: none;
             }
             .cv-sidebar h2 {
-                color: var(--text-color-dark);
+                color: #000;
                 border-bottom: 1px solid #ddd;
             }
             .cv-sidebar ul li strong {
-                color: var(--text-color-dark);
+                color: #000;
             }
             .skill-item {
                 background-color: #e0e0e0;
                 border-color: #ccc;
-                color: var(--text-color-dark);
+                color: #000;
             }
             .cv-main-content h1,
             .cv-main-content .tagline,
@@ -262,7 +270,7 @@
             .cv-subsection .sub-info,
             .cv-subsection p,
             .cv-subsection ul li {
-                color: var(--text-color-dark);
+                color: #000;
             }
             .cv-section {
                 border-bottom-color: #eee;
@@ -271,7 +279,7 @@
                 border-bottom-color: #ccc;
             }
             .cv-subsection ul li::before {
-                color: var(--text-color-dark);
+                color: #000;
             }
         }
     </style>
@@ -298,12 +306,12 @@
                 <span class="skill-item">TypeScript</span>
                 <span class="skill-item">Node.js</span>
                 <span class="skill-item">Graphic Design</span>
-                <span class="skill-item">Video & Photo Editing</span>
                 <span class="skill-item">3D Modeling</span>
                 <span class="skill-item">Mechanical Design</span>
                 <span class="skill-item">Motion Graphics</span>
                 <span class="skill-item">Programming</span>
                 <span class="skill-item">Project Management</span>
+                <span class="skill-item">Multimedia Editing</span>
             </div>
 
             <h2>Software</h2>
