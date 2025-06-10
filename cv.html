@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Alejandro Rach</title>
+    <link rel="stylesheet" href="/src/index.css"> <!-- Re-use main styles for general appearance -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff; /* A clean, modern blue */
+            --text-color-dark: #333;
+            --text-color-light: #f8f8f8;
+            --background-dark: #121212; /* Even darker background for screen */
+            --card-background-dark: #1e1e1e;
+            --border-color-light: #eee;
+            --border-color-dark: #333;
+            --accent-color: #007bff;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-color-light);
+            background-color: var(--background-dark);
+            scroll-behavior: smooth;
+        }
+
+        .cv-container {
+            display: flex; /* Use flex for more control on mobile */
+            flex-direction: column; /* Stack columns on mobile */
+            max-width: 900px;
+            margin: 2rem auto;
+            background-color: var(--card-background-dark);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            overflow: hidden; /* For rounded corners */
+        }
+
+        @media (min-width: 768px) {
+            .cv-container {
+                flex-direction: row; /* Side-by-side on desktop */
+                display: grid;
+                grid-template-columns: 1fr 2.5fr; /* Two columns for desktop */
+                gap: 2.5rem;
+            }
+        }
+
+        /* Sidebar styles */
+        .cv-sidebar {
+            background-color: transparent; /* No background for minimalist look */
+            padding-right: 1.5rem; /* Add padding for separation on desktop */
+            padding-bottom: 2rem; /* Add padding for separation on mobile */
+            border-right: none; /* No border for minimalist look */
+            border-bottom: 1px solid var(--border-color-dark); /* Subtle separator on mobile */
+        }
+
+        @media (min-width: 768px) {
+            .cv-sidebar {
+                border-right: 1px solid var(--border-color-dark); /* Subtle separator on desktop */
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+        }
+
+        .cv-sidebar h2 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 1.2em;
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            border-bottom: none; /* No border for minimalist look */
+            padding-bottom: 0.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cv-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .cv-sidebar ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        .cv-sidebar ul li strong {
+            color: var(--accent-color);
+            font-weight: 400;
+        }
+        .cv-sidebar ul li a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+        .cv-sidebar ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            background-color: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 4px;
+            padding: 0.3rem 0.7rem;
+            font-size: 0.8em;
+            color: #f0f0f0;
+            white-space: nowrap;
+        }
+
+        /* Main content styles */
+        .cv-main-content {
+            padding-left: 0;
+            padding-top: 1.5rem; /* Add padding for separation on mobile */
+        }
+
+        @media (min-width: 768px) {
+            .cv-main-content {
+                padding-left: 2.5rem; /* Add padding for separation on desktop */
+                padding-top: 0;
+            }
+        }
+
+        .cv-main-content h1 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 2.5em;
+            color: var(--text-color-light);
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .cv-main-content .tagline {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1em;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .cv-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color-dark);
+        }
+
+        .cv-section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .cv-section h2 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 1.6em;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color-dark);
+            padding-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cv-subsection h3 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 1.2em;
+            color: var(--text-color-light);
+            margin-bottom: 0.4rem;
+        }
+
+        .cv-subsection .sub-info {
+            font-size: 0.85em;
+            color: #aaa;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .cv-subsection p {
+            font-size: 0.95em;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .cv-subsection ul {
+            list-style: none; /* No bullets for minimalist look */
+            padding: 0;
+            margin-left: 0;
+        }
+
+        .cv-subsection ul li {
+            position: relative;
+            margin-bottom: 0.6em;
+            padding-left: 1.2em; /* Space for custom bullet */
+            color: #ccc;
+            font-size: 0.95em;
+        }
+
+        .cv-subsection ul li::before {
+            content: '–'; /* Custom bullet point */
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                font-family: 'Open Sans', sans-serif;
+                color: var(--text-color-dark);
+                background-color: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            .cv-container {
+                display: grid;
+                grid-template-columns: 1fr 2.5fr; /* Force two columns for print */
+                gap: 1.5cm;
+                max-width: 21cm; /* A4 width */
+                min-height: 29.7cm; /* A4 height */
+                margin: 0.5cm auto;
+                padding: 1.5cm;
+                border: 1px solid #ccc;
+                box-shadow: none;
+                background-color: #fff;
+                color: var(--text-color-dark);
+            }
+            .cv-sidebar {
+                background-color: #f8f8f8;
+                padding: 1rem;
+                border-right: 1px solid #eee;
+                border-bottom: none;
+            }
+            .cv-sidebar h2 {
+                color: var(--text-color-dark);
+                border-bottom: 1px solid #ddd;
+            }
+            .cv-sidebar ul li strong {
+                color: var(--text-color-dark);
+            }
+            .skill-item {
+                background-color: #e0e0e0;
+                border-color: #ccc;
+                color: var(--text-color-dark);
+            }
+            .cv-main-content h1,
+            .cv-main-content .tagline,
+            .cv-section h2,
+            .cv-subsection h3,
+            .cv-subsection .sub-info,
+            .cv-subsection p,
+            .cv-subsection ul li {
+                color: var(--text-color-dark);
+            }
+            .cv-section {
+                border-bottom-color: #eee;
+            }
+            .cv-section h2 {
+                border-bottom-color: #ccc;
+            }
+            .cv-subsection ul li::before {
+                color: var(--text-color-dark);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <aside class="cv-sidebar">
+            <!-- <img src="path/to/your/profile.jpg" alt="Profile Picture" style="width:100%; border-radius:8px; margin-bottom:1.5rem;"> -->
+
+            <h2>Contacto</h2>
+            <ul>
+                <li><strong>Email:</strong> your-email@example.com</li>
+                <li><strong>Teléfono:</strong> +123 456 7890</li>
+                <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></li>
+                <li><strong>Portafolio:</strong> <a href="https://yourportfolio.com" target="_blank">yourportfolio.com</a></li>
+            </ul>
+
+            <h2>Habilidades & Software</h2>
+            <div class="skills-grid">
+                <span class="skill-item">React</span>
+                <span class="skill-item">TypeScript</span>
+                <span class="skill-item">Node.js</span>
+                <span class="skill-item">Figma</span>
+                <span class="skill-item">Photoshop</span>
+                <span class="skill-item">Illustrator</span>
+                <span class="skill-item">Blender</span>
+                <span class="skill-item">After Effects</span>
+                <span class="skill-item">Premiere Pro</span>
+                <span class="skill-item">AutoCAD</span>
+                <span class="skill-item">SolidWorks</span>
+                <span class="skill-item">Fusion 360</span>
+                <span class="skill-item">Git</span>
+                <span class="skill-item">VS Code</span>
+                <span class="skill-item">Docker</span>
+                <span class="skill-item">Kubernetes</span>
+            </div>
+        </aside>
+
+        <main class="cv-main-content">
+            <h1>Alejandro Rach</h1>
+            <p class="tagline">Multi-disciplinary Creative Studio & Product Designer</p>
+
+            <div class="cv-section">
+                <h2>Acerca de Mí</h2>
+                <p>8nergy© es un estudio creativo multidisciplinario dedicado a la creación de experiencias de producto y tecnologías inmersivas y atractivas. Nuestro trabajo se define por un compromiso con la claridad, la coherencia y una meticulosa atención al detalle, asegurando que cada proyecto resuene auténticamente con su audiencia. Creemos en el poder del diseño para transformar ideas en experiencias impactantes. Nuestro enfoque combina la experiencia técnica con la visión creativa para ofrecer soluciones que no solo cumplen, sino que superan las expectativas.</p>
+            </div>
+
+            <div class="cv-section">
+                <h2>Experiencia</h2>
+                <div class="cv-subsection">
+                    <h3>[Tu Rol Anterior] en [Nombre de la Empresa]</h3>
+                    <span class="sub-info">[Fechas: Ej. Ene 2020 - Dic 2023]</span>
+                    <ul>
+                        <li>Desarrollo e implementación de características clave para diversas aplicaciones web.</li>
+                        <li>Colaboración con equipos multifuncionales para entregar productos de alta calidad.</li>
+                        <li>Gestión de cronogramas de proyectos y aseguramiento de la entrega a tiempo de los hitos.</li>
+                    </ul>
+                </div>
+                <!-- Añadir más entradas de experiencia según sea necesario -->
+            </div>
+
+            <div class="cv-section">
+                <h2>Educación</h2>
+                <div class="cv-subsection">
+                    <h3>[Tu Título] en [Tu Campo]</h3>
+                    <span class="sub-info">[Nombre de la Universidad], [Año de Graduación]</span>
+                    <ul>
+                        <li>Cursos relevantes: [Lista de cursos relevantes]</li>
+                        <li>Premios/Honores: [Lista de logros]</li>
+                    </ul>
+                </div>
+                <!-- Añadir más entradas de educación según sea necesario -->
+            </div>
+        </main>
+    </div>
+</body>
+</html> 
