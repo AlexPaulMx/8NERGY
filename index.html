@@ -93,6 +93,7 @@
           <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
           <a href="https://t.me/yourtelegramusername" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
           <a href="https://wa.me/yourphonenumber" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" id="cvButton" aria-label="CV"><i class="fas fa-file-alt"></i></a>
         </div>
       </div>
     </div>
@@ -105,7 +106,18 @@
         <p id="modalDescription" class="modal-description"></p>
       </div>
     </div>
+
+    <!-- Nuevo Modal de CV -->
+    <div id="cvModal" class="modal-overlay">
+      <div class="modal-content cv-modal">
+        <button class="close-button">&times;</button>
+        <h2 class="modal-title">Curriculum Vitae</h2>
+        <div class="cv-content">
+          <!-- El contenido de la sección About se cargará aquí -->
+        </div>
+      </div>
+    </div>
     
-    <script src="/src/script.js"></script> <!-- Enlazar el script.js -->
+    <script src="src/script.js"></script> <!-- Cambiado de /src/script.js a src/script.js -->
   </body>
 </html>

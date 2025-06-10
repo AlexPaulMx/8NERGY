@@ -574,6 +574,8 @@ a {
   transition: opacity 0.3s ease;
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-overlay.active {
@@ -598,6 +600,7 @@ a {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
 }
 
 .modal-overlay.active .modal-content {
@@ -1273,7 +1276,7 @@ a {
   max-width: 900px; /* Adjusted max-width */
   height: auto; /* Allow height to adjust to content */
   max-height: 90vh; /* Prevent it from exceeding viewport height */
-  padding: 0;
+  padding: 2rem;
 }
 
 .clients-modal-content {
@@ -1849,6 +1852,13 @@ a {
         padding: 1.5rem;
     }
 
+    .modal-content.cv-modal {
+        width: 95%;
+        height: auto;
+        max-height: 90vh;
+        padding: 1.5rem;
+    }
+
     .portfolio-grid,
     .graphic-design-grid {
         grid-template-columns: 1fr;
@@ -2032,4 +2042,19 @@ a {
     width: auto; /* Let content determine width */
     text-align: left;
     margin-bottom: 0; /* Override any default margin */
+}
+
+.modal-content.cv-modal {
+  width: 80vw;
+  max-width: 900px;
+  height: 80vh;
+  max-height: 90vh;
+  padding: 2rem;
+}
+
+.cv-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
 }

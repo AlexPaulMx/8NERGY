@@ -6,34 +6,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalDescription = document.getElementById('modalDescription');
     const locationSpan = document.querySelector('.header-right .location');
 
-    // Function to update time and location
-    function updateLocationAndTime() {
+    // New: CV Button and Modal elements
+    const cvButton = document.getElementById('cvButton');
+    const cvModal = document.getElementById('cvModal');
+    const cvCloseButton = cvModal ? cvModal.querySelector('.close-button') : null;
+    const cvContent = cvModal ? cvModal.querySelector('.cv-content') : null;
+
+    // Verificar que los elementos críticos existan
+    if (!modal || !closeButton || !modalTitle || !modalDescription) {
+        console.error('Elementos críticos del modal no encontrados');
+        return;
+    }
+
+    // Function to update time
+    function updateTime() {
+        if (!locationSpan) return;
         const now = new Date();
         const options = { hour: '2-digit', minute: '2-digit', hour12: true };
         const formattedTime = now.toLocaleTimeString('en-US', options);
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const lat = position.coords.latitude.toFixed(2);
-                    const lon = position.coords.longitude.toFixed(2);
-                    locationSpan.textContent = `Lat: ${lat}, Lon: ${lon} • ${formattedTime}`;
-                },
-                (error) => {
-                    console.error('Error getting location:', error);
-                    locationSpan.textContent = `Location Unavailable • ${formattedTime}`;
-                }
-            );
-        } else {
-            locationSpan.textContent = `Geolocation Not Supported • ${formattedTime}`;
-        }
+        locationSpan.textContent = formattedTime;
     }
 
-    // Initial call to update location and time
-    updateLocationAndTime();
+    // Initial call to update time
+    updateTime();
 
-    // Update every minute (optional, if time needs to be live)
-    setInterval(updateLocationAndTime, 60000);
+    // Update every minute
+    setInterval(updateTime, 60000);
 
     const cardDetails = {
         'about': {
@@ -351,6 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cardDetails[cardId]) {
                 modalTitle.textContent = cardDetails[cardId].title;
                 modalDescription.innerHTML = cardDetails[cardId].description;
+                modal.style.display = 'flex'; // Asegurar que el modal sea visible
                 modal.classList.add('active');
             }
         });
@@ -359,12 +358,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close modal when clicking the close button
     closeButton.addEventListener('click', () => {
         modal.classList.remove('active');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300); // Esperar a que termine la transición
     });
 
     // Close modal when clicking outside
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300); // Esperar a que termine la transición
         }
     });
 
@@ -430,5 +435,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // This won't work perfectly if modal is opened with JS later, but handles initial state.
     if (modal.style.display === 'block' && modalTitle.textContent === 'Clients') {
         showSlides(0);
+    }
+
+    // New: Handle CV button click
+    if (cvButton) {
+        cvButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+            window.open('/cv.html', '_blank'); // Open cv.html in a new tab
+        });
     }
 }); 
