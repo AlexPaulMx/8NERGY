@@ -121,8 +121,8 @@ a {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: minmax(250px, auto) minmax(250px, auto);
   grid-template-areas:
-    "portfolio portfolio contact"
-    "about icons resume";
+    "portfolio portfolio clients"
+    "about icons contact";
   gap: 1.25rem;
   width: 100%;
   padding: 0 2.5rem;
@@ -133,16 +133,13 @@ a {
 .card-about { grid-area: about; }
 .card-portfolio { grid-area: portfolio; }
 .card-contact { grid-area: contact; }
-/* .image-card { 
-  grid-area: image;
-  border-radius: 1.25rem; 
-} */
+.card-clients { grid-area: clients; }
 .icons-card { grid-area: icons; 
   display: flex; /* Ensure flexbox for centering content */
   align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */
 }
-.card-resume { grid-area: resume; }
+/* .card-resume { grid-area: resume; } */ /* Removed as there's no corresponding HTML element */
 
 /* Estilos de Card.css */
 .card {
@@ -160,7 +157,6 @@ a {
   justify-content: flex-end;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   background-color: rgba(10, 10, 10, 0.4); /* Fondo base de la tarjeta */
-  min-height: 237.5px; /* Reduced by 5% from 250px */
 }
 
 .card-portfolio {
@@ -1703,7 +1699,7 @@ a {
 
     .main-content {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         justify-content: space-between;
         gap: 1rem;
@@ -1712,13 +1708,13 @@ a {
     }
 
     .card-about {
-        width: 48%;
+        width: 100%;
         min-height: 150px;
         order: 1;
     }
 
     .card-contact {
-        width: 48%;
+        width: 100%;
         min-height: 150px;
         order: 2;
     }
@@ -1735,28 +1731,21 @@ a {
         order: 3;
     }
 
-    .contact-about-container {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        width: 100%;
-    }
-
     .about-contact-wrapper {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         gap: 1rem;
         width: 100%;
-        margin-bottom: 1rem; /* Adjust as needed */
+        margin-bottom: 1rem;
     }
 
     .about-contact-wrapper .card-about,
     .about-contact-wrapper .card-contact {
-        width: 48%; /* Adjust for gap */
+        width: 48%;
         min-height: 150px;
-        order: unset; /* Remove previous order if any */
-        grid-area: unset; /* Remove previous grid-area if any */
+        order: unset;
+        grid-area: unset;
     }
 
     .card-about, .card-portfolio, .card-contact, .icons-card, .card-resume, .card-clients {
@@ -1766,7 +1755,7 @@ a {
     .card {
         max-width: 100%;
         margin: 0;
-        min-height: 190px; /* Reduced by 5% from 200px */
+        min-height: 200px;
         padding: 1.5rem;
     }
 
