@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="/src/index.css"> <!-- Re-use main styles for general appearance -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
             --background-color-main: #000; /* From src/index.css body */
             --text-color-main: #fff; /* From src/index.css body */
-            --card-background-color: rgba(10, 10, 10, 0.4); /* From src/index.css .card */
+            --card-background-color: #000; /* Changed to solid black */
             --card-border-color: rgba(255, 255, 255, 0.08); /* From src/index.css .card */
             --accent-color: #888; /* A professional grey */
         }
@@ -22,7 +23,7 @@
             padding: 0;
             line-height: 1.6;
             color: var(--text-color-main);
-            background-color: var(--background-color-main);
+            background-color: #000; /* Changed to solid black */
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -32,14 +33,14 @@
             display: flex; /* Use flex for more control on mobile */
             flex-direction: column; /* Stack columns on mobile */
             max-width: 900px;
-            margin: 2rem auto;
-            background-color: var(--card-background-color);
+            margin: 0 auto;
+            background-color: #000; /* Changed to solid black */
             border-radius: 1.25rem; /* From src/index.css .card */
             padding: 2.5rem;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* From src/index.css .card */
-            backdrop-filter: blur(12px) brightness(1.1) contrast(1.1); /* From src/index.css .card */
+            backdrop-filter: none; /* Removed for consistent PDF generation */
             overflow: hidden; /* For rounded corners */
-            border: 1px solid var(--card-border-color); /* From src/index.css .card */
+            border: 1px solid #333333; /* Changed to solid dark grey */
         }
 
         @media (min-width: 768px) {
@@ -57,12 +58,12 @@
             padding-right: 1.5rem;
             padding-bottom: 2rem;
             border-right: none;
-            border-bottom: 1px solid var(--card-border-color); /* Subtle separator on mobile */
+            border-bottom: 1px solid #333333; /* Changed to solid dark grey */
         }
 
         @media (min-width: 768px) {
             .cv-sidebar {
-                border-right: 1px solid var(--card-border-color); /* Subtle separator on desktop */
+                border-right: 1px solid #333333; /* Changed to solid dark grey */
                 border-bottom: none;
                 padding-bottom: 0;
             }
@@ -112,19 +113,19 @@
         }
 
         .skill-item {
-            background-color: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            background-color: #333333; /* Changed from rgba to solid hex */
+            border: 1px solid #555555; /* Changed from rgba to solid hex */
             border-radius: 0.5rem; /* From src/index.css skill-item */
-            padding: 0.4rem 0.8rem; /* Adjusted padding */
-            font-size: 0.85em;
+            padding: 0.3rem 0.6rem; /* Adjusted padding */
+            font-size: 0.8em; /* Adjusted font size */
             color: var(--text-color-main);
             white-space: nowrap;
             transition: background-color 0.2s ease, border-color 0.2s ease;
         }
 
         .skill-item:hover {
-            background-color: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.3);
+            background-color: #555555; /* Changed from rgba to solid hex */
+            border-color: #777777; /* Changed from rgba to solid hex */
         }
 
         /* Main content styles */
@@ -159,9 +160,9 @@
         }
 
         .cv-section {
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--card-border-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #333333; /* Changed to solid dark grey */
         }
 
         .cv-section:last-child {
@@ -171,49 +172,52 @@
 
         .cv-section h2 {
             font-family: 'Inter', sans-serif;
-            font-weight: 700; /* Bold for section titles */
-            font-size: 1.6em;
+            font-weight: 700;
+            font-size: 1.4em;
             color: var(--accent-color);
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--card-border-color);
-            padding-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
+            border-bottom: 2px solid #333333; /* Changed to solid dark grey */
+            padding-bottom: 0.3rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .cv-subsection h3 {
             font-family: 'Inter', sans-serif;
-            font-weight: 600; /* Slightly less bold than h2 */
-            font-size: 1.2em;
+            font-weight: 600;
+            font-size: 1.1em;
             color: var(--text-color-main);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.2rem;
         }
 
         .cv-subsection .sub-info {
             font-size: 0.85em;
-            color: #aaa;
-            margin-bottom: 0.75rem;
+            color: #aaaaaa; /* Changed to solid light grey */
+            margin-bottom: 0.4rem;
             display: block;
         }
 
         .cv-subsection p {
             font-size: 0.95em;
-            color: #ccc;
-            margin-bottom: 1rem;
+            color: #cccccc; /* Changed to solid light grey */
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
         }
 
         .cv-subsection ul {
             list-style: none;
             padding: 0;
             margin-left: 0;
+            margin-bottom: 0.4rem;
         }
 
         .cv-subsection ul li {
             position: relative;
-            margin-bottom: 0.6em;
+            margin-bottom: 0.3em;
             padding-left: 1.2em;
-            color: #ccc;
+            color: #cccccc; /* Changed to solid light grey */
             font-size: 0.95em;
+            line-height: 1.4;
         }
 
         .cv-subsection ul li::before {
@@ -227,91 +231,135 @@
         /* Print styles */
         @media print {
             @page {
-                size: A4;
-                margin: 0;
+                size: letter;
+                margin: 1in;
             }
             body {
-                font-family: 'Inter', sans-serif;
-                color: #000;
-                background-color: #fff;
+                font-family: 'Arial', sans-serif;
+                color: #fff;
+                background-color: #000;
                 margin: 0;
                 padding: 0;
+                line-height: 1.15;
+                font-size: 11pt;
             }
             .cv-container {
                 display: grid;
-                grid-template-columns: 1fr 2.5fr;
-                gap: 1cm;
-                max-width: 21cm;
-                min-height: 29.7cm;
-                margin: 0.5cm auto;
-                padding: 1cm;
-                border: 1px solid #ccc;
+                grid-template-columns: 1fr 2fr;
+                gap: 0.5in;
+                max-width: 8.5in;
+                min-height: 11in;
+                margin: 0;
+                padding: 0;
+                border: none;
                 box-shadow: none;
-                background-color: #fff;
-                color: #000;
-            }
-            .cv-sidebar {
-                background-color: #f8f8f8;
-                padding: 0.75rem;
-                border-right: 1px solid #eee;
-            }
-            .cv-sidebar h2 {
-                font-size: 1.1em;
-                margin-bottom: 0.5rem;
-                padding-bottom: 0.1rem;
-            }
-            .cv-sidebar ul {
-                margin-bottom: 0.75rem;
-            }
-            .cv-sidebar ul li {
-                margin-bottom: 0.3em;
-                font-size: 0.9em;
-            }
-            .cv-main-content {
-                padding-left: 1.5cm;
-                padding-top: 0;
-            }
-            .cv-main-content h1 {
-                font-size: 2em;
-                margin-bottom: 0.3rem;
-            }
-            .cv-main-content .tagline {
-                font-size: 1em;
-                margin-bottom: 1.5rem;
+                background-color: #000;
+                backdrop-filter: none; /* Removed for print to avoid rendering issues */
             }
             .cv-section {
-                margin-bottom: 1.5rem;
-                padding-bottom: 1rem;
+                margin-bottom: 0.75rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
             .cv-section h2 {
-                font-size: 1.4em;
-                margin-bottom: 0.8rem;
-                padding-bottom: 0.4rem;
+                font-size: 12pt;
+                font-weight: bold;
+                color: var(--accent-color);
+                margin-bottom: 0.3rem;
+                padding-bottom: 0.2rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
             .cv-subsection h3 {
-                font-size: 1.1em;
-                margin-bottom: 0.3rem;
+                font-size: 11pt;
+                font-weight: bold;
+                color: #fff;
+                margin-bottom: 0.2rem;
             }
             .cv-subsection .sub-info {
-                font-size: 0.8em;
-                margin-bottom: 0.5rem;
+                font-size: 10pt;
+                color: #aaa;
+                margin-bottom: 0.2rem;
             }
-            .cv-subsection p {
-                font-size: 0.9em;
-                margin-bottom: 0.8rem;
+            .cv-subsection p, .cv-subsection ul li {
+                font-size: 11pt;
+                color: #ccc;
+                margin-bottom: 0.2rem;
+            }
+            .cv-subsection ul {
+                margin-bottom: 0.3rem;
             }
             .cv-subsection ul li {
-                margin-bottom: 0.5em;
-                font-size: 0.9em;
+                margin-bottom: 0.2rem;
             }
-            .skills-grid .skill-item {
-                font-size: 0.8em;
-                padding: 0.3rem 0.6rem;
+            .skill-item {
+                font-size: 10pt;
+                padding: 0.1rem 0.3rem;
+                margin: 0.1rem;
+                background-color: #333333; /* Solid dark grey for skill item background */
+                border: 1px solid #555555; /* Slightly lighter grey for skill item border */
+                color: #ffffff; /* Explicit white for skill item text */
+            }
+            .cv-sidebar h2 {
+                font-size: 12pt;
+                color: #888888; /* Accent color in solid hex */
+            }
+            .cv-sidebar ul li {
+                font-size: 11pt;
+                color: #ffffff; /* Explicit white for sidebar list items */
+            }
+            .cv-main-content h1 {
+                font-size: 16pt;
+                margin-bottom: 0.3rem;
+                color: #ffffff; /* Explicit white for main title */
+            }
+            .cv-main-content .tagline {
+                font-size: 11pt;
+                margin-bottom: 1rem;
+                color: #888888; /* Accent color in solid hex */
+            }
+        }
+
+        .download-button {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background-color: var(--accent-color);
+            color: var(--text-color-main);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            z-index: 1000;
+        }
+
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-button i {
+            font-size: 1.1em;
+        }
+
+        @media print {
+            .download-button {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
+    <button class="download-button" onclick="downloadCV()">
+        <i class="fas fa-download"></i>
+        Download CV
+    </button>
+
     <div class="cv-container">
         <aside class="cv-sidebar">
             <div class="cv-image-container">
@@ -319,69 +367,56 @@
             </div>
 
             <div class="cv-section">
-                <h2>Contact</h2>
+                <h2><i class="fas fa-id-card"></i> Contact</h2>
                 <ul>
-                    <li><i class="fas fa-envelope"></i> rachaudiovisuals@gmail.com</li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:raaudiovisuals@gmail.com">raaudiovisuals@gmail.com</a></li>
                     <li><i class="fas fa-phone"></i> +52 867 298 92 49</li>
-                    <li><i class="fas fa-globe"></i> <a href="https://www.8nergy.xyz" target="_blank">www.8nergy.xyz</a></li>
+                    <li><i class="fas fa-globe"></i> <a href="http://www.8nergy.xyz" target="_blank">www.8nergy.xyz</a></li>
                 </ul>
-            </div>
-
-            <h2>Skills</h2>
-            <ul>
-                <li>Graphic Design</li>
-                <li>UX/UI Design (Web Design)</li>
-                <li>3D Modeling</li>
-                <li>Mechanical Design</li>
-                <li>Motion Graphics</li>
-                <li>Programming (Python, JavaScript, C++)</li>
-                <li>Web Development (HTML, CSS, React)</li>
-                <li>Database Management (SQL, NoSQL)</li>
-                <li>Project Management</li>
-            </ul>
-
-            <h2>Software</h2>
-            <div class="skills-grid">
-                <div class="skill-item">Photoshop</div>
-                <div class="skill-item">Illustrator</div>
-                <div class="skill-item">InDesign</div>
-                <div class="skill-item">Premiere Pro</div>
-                <div class="skill-item">After Effects</div>
-                <div class="skill-item">Figma</div>
-                <div class="skill-item">SolidWorks</div>
-                <div class="skill-item">AutoCAD</div>
-                <div class="skill-item">Blender</div>
-                <div class="skill-item">Keyshot</div>
-                <div class="skill-item">Git</div>
-                <div class="skill-item">VS Code</div>
-                <div class="skill-item">Docker</div>
-                <div class="skill-item">Kubernetes</div>
-                <div class="skill-item">Cursor</div>
             </div>
 
             <div class="cv-section">
-                <h2>Languages</h2>
-                <ul>
-                    <li>English: Native</li>
-                    <li>Spanish: Native</li>
-                </ul>
+                <h2><i class="fas fa-lightbulb"></i> Skills</h2>
+                <p style="font-size: 0.95em; color: #cccccc;">
+                    Graphic Design • Motion Graphics • UX/UI • Web & App Design • 3D Modeling • Mechanical Design • Programming (Python, JavaScript, C++) • Web Development (HTML, CSS, React) • Database • Project Management
+                </p>
+            </div>
+
+            <div class="cv-section">
+                <h2><i class="fas fa-laptop-code"></i> Software</h2>
+                <div class="skills-grid">
+                    <div class="skill-item" style="background-color: #007ACC; border-color: #005F99; color: #FFFFFF;">Photoshop</div>
+                    <div class="skill-item" style="background-color: #FF7C00; border-color: #CC6200; color: #FFFFFF;">Illustrator</div>
+                    <div class="skill-item" style="background-color: #FF0066; border-color: #CC0052; color: #FFFFFF;">InDesign</div>
+                    <div class="skill-item" style="background-color: #990099; border-color: #660066; color: #FFFFFF;">Premiere Pro</div>
+                    <div class="skill-item" style="background-color: #00CCCC; border-color: #009999; color: #FFFFFF;">After Effects</div>
+                    <div class="skill-item" style="background-color: #A259FF; border-color: #793DCC; color: #FFFFFF;">Figma</div>
+                    <div class="skill-item" style="background-color: #0078D4; border-color: #005A9C; color: #FFFFFF;">SolidWorks</div>
+                    <div class="skill-item" style="background-color: #E60000; border-color: #B20000; color: #FFFFFF;">AutoCAD</div>
+                    <div class="skill-item" style="background-color: #FF6100; border-color: #CC4E00; color: #FFFFFF;">Blender</div>
+                    <div class="skill-item" style="background-color: #33CC33; border-color: #229922; color: #FFFFFF;">Keyshot</div>
+                    <div class="skill-item" style="background-color: #F05033; border-color: #B33D25; color: #FFFFFF;">Git</div>
+                    <div class="skill-item" style="background-color: #007ACC; border-color: #005F99; color: #FFFFFF;">VS Code</div>
+                    <div class="skill-item" style="background-color: #4285F4; border-color: #3367D6; color: #FFFFFF;">Cursor</div>
+                </div>
             </div>
         </aside>
 
         <main class="cv-main-content">
             <h1>Alejandro Rach</h1>
-            <p class="tagline">Multi-disciplinary Creative Studio & Product Designer</p>
+            <p class="tagline">Full Stack Engineer</p>
 
             <div class="cv-section">
-                <h2>About Me</h2>
-                <p>I'm a multi-disciplinary engineer dedicated to create immersive and engaging product experiences and technologies. Our work is defined by a commitment to clarity, consistency, and meticulous attention to detail, ensuring that every project authentically resonates with its audience.</p>
+                <h2><i class="fas fa-user-alt"></i> About Me</h2>
+                <p>
+                    I'm a multi-disciplinary engineer dedicated to create immersive and engaging product experiences and technologies.
+                </p>
             </div>
 
             <div class="cv-section">
-                <h2>Experience</h2>
+                <h2><i class="fas fa-briefcase"></i> Experience</h2>
                 <div class="cv-subsection">
-                    <h3>Manufacturing Engineer at Rheem Nuevo Laredo</h3>
-                    <span class="sub-info">2018.06 - 2021.10</span>
+                    <h3>Manufacturing Engineer at Rheem NL | 2018 - 2021</h3>
                     <ul>
                         <li>Create, check, and update detailed 3D and 2D designs of products, allowing for visualization and physical creation.</li>
                         <li>Program the manufacturing line process and create and update BOM (Bills of materials).</li>
@@ -389,38 +424,48 @@
                     </ul>
                 </div>
                 <div class="cv-subsection">
-                    <h3>Product Designer at Sweetman Technologies</h3>
-                    <span class="sub-info">2023.07 - 2024.01</span>
+                    <h3>Product Designer at Sweetman Tech | 2023 - 2024</h3>
                     <ul>
                         <li>Conceptualize and design digital interfaces, websites, and mobile applications.</li>
-                        <li>Collaborate with engineers, developers, marketing, and other stakeholders to ensure seamless product development.</li>
                         <li>Optimize designs based on user feedback and data analytics to continuously improve the product.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="cv-section">
-                <h2>Education</h2>
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
                 <div class="cv-subsection">
-                    <h3>Mechatronical Engineer at UT Nuevo Laredo</h3>
-                    <span class="sub-info">2010-2013</span>
-                    <ul>
-                        <li>Understanding of mechanical, electrical, control, programming, and software engineering.</li>
-                        <li>Understanding of mechanical design, materials science, and manufacturing processes.</li>
-                        <li>Proficiency in 3D modeling softwares.</li>
-                    </ul>
+                    <h3>Mechatronical at UTNL | 2014 - 2018 | Engineer</h3>
+                    <p>Specialized in automation, robotics, and control systems. Developed skills in programming, electronics, and mechanical design.</p>
                 </div>
                 <div class="cv-subsection">
-                    <h3>IT Technician at Cbtis 137</h3>
-                    <span class="sub-info">2014-2018</span>
-                    <ul>
-                        <li>Problem solving, updates, and repairs on computers, servers, and networks.</li>
-                        <li>Programming and designing applications.</li>
-                        <li>Understanding software design and introduction to programming languages.</li>
-                    </ul>
+                    <h3>IT Technician at CBTIS 137 | 2012 - 2014</h3>
+                    <p>Focused on software development, database management, and network administration.</p>
                 </div>
+            </div>
+            <div class="cv-section">
+                <h2><i class="fas fa-language"></i> Languages</h2>
+                <ul>
+                    <li>Spanish: Native</li>
+                    <li>English: Fluent</li>
+                </ul>
             </div>
         </main>
     </div>
+
+    <script>
+        function downloadCV() {
+            const element = document.querySelector('.cv-container');
+            const opt = {
+                margin: 0,
+                filename: 'Alejandro_Rach_CV.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, backgroundColor: '#000000' }, // Force black background
+                jsPDF: { unit: 'cm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
 </body>
 </html> 
