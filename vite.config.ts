@@ -4,14 +4,17 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: '/',
   build: {
     outDir: 'dist',
-    assetsDir: 'public',
+    assetsDir: '',
     rollupOptions: {
       input: {
-        main: './index.html'
+        main: './public/index.html'
       }
     }
+  },
+  server: {
+    port: 3000
   }
 })
