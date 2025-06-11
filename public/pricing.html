@@ -23,102 +23,130 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   </head>
   <body>
-    <div class="noise"></div>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
-    <header>
-      <nav>
-        <div class="logo">
-          <a href="/">8NERGY</a>
+    <div class="noise-background">
+      <div class="noise"></div>
+    </div>
+    <div class="overlay-background"></div>
+    
+    <div class="App-container">
+      <header class="header">
+        <div class="header-left">
+          <span class="name">8NERGY</span>
+          <span class="title">Creative Studio</span>
         </div>
-        <div class="nav-links">
-          <a href="/">Home</a>
-          <a href="/pricing.html" class="active">Pricing</a>
-          <a href="/contact.html">Contact</a>
+        <div class="header-right">
+          <span class="location">Nuevo Laredo • 1:01 PM</span>
         </div>
-      </nav>
-    </header>
+      </header>
 
-    <main class="pricing-section">
-      <h1>Our Services</h1>
-      <p class="pricing-subtitle">Choose the perfect plan for your digital needs</p>
+      <main class="pricing-section">
+        <a href="/" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        
+        <h1>Our Services</h1>
+        <p class="pricing-subtitle">Choose the perfect plan for your digital needs</p>
 
-      <div class="pricing-grid">
-        <!-- Basic Package -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <h2>Basic</h2>
-            <div class="price">
-              <span class="currency">$</span>
-              <span class="amount">999</span>
-              <span class="period">/project</span>
+        <div class="pricing-grid">
+          <!-- Basic Package -->
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h2>Basic</h2>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">499</span>
+                <span class="period">USD</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Single Page Website</li>
+                <li><i class="fas fa-check"></i> Dynamic Design</li>
+                <li><i class="fas fa-check"></i> Responsive with Mobile Devices</li>
+                <li><i class="fas fa-check"></i> 1 Month Support</li>
+                <li><i class="fas fa-check"></i> 1 Update</li>
+              </ul>
             </div>
           </div>
-          <div class="pricing-features">
-            <ul>
-              <li><i class="fas fa-check"></i> Single Page Website</li>
-              <li><i class="fas fa-check"></i> Responsive Design</li>
-              <li><i class="fas fa-check"></i> Basic SEO Setup</li>
-              <li><i class="fas fa-check"></i> Contact Form</li>
-              <li><i class="fas fa-check"></i> Social Media Integration</li>
-              <li><i class="fas fa-check"></i> 1 Month Support</li>
-            </ul>
-          </div>
-          <a href="/contact.html" class="pricing-cta">Get Started</a>
-        </div>
 
-        <!-- Pro Package -->
-        <div class="pricing-card featured">
-          <div class="pricing-header">
-            <h2>Pro</h2>
-            <div class="price">
-              <span class="currency">$</span>
-              <span class="amount">2,499</span>
-              <span class="period">/project</span>
+          <!-- Medium Package -->
+          <div class="pricing-card featured">
+            <div class="pricing-header">
+              <h2>Medium</h2>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">800</span>
+                <span class="period">USD</span>
+              </div>
+              <p class="starting-from">Starting from</p>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Multi-page Website</li>
+                <li><i class="fas fa-check"></i> Dynamic Design</li>
+                <li><i class="fas fa-check"></i> Responsive with Mobile Devices</li>
+                <li><i class="fas fa-check"></i> E-commerce Integration Option</li>
+                <li><i class="fas fa-check"></i> Clients Database Management</li>
+                <li><i class="fas fa-check"></i> 3 Months Support</li>
+                <li><i class="fas fa-check"></i> 3 Updates Availability</li>
+              </ul>
             </div>
           </div>
-          <div class="pricing-features">
-            <ul>
-              <li><i class="fas fa-check"></i> Multi-page Website</li>
-              <li><i class="fas fa-check"></i> Custom Design</li>
-              <li><i class="fas fa-check"></i> Advanced SEO</li>
-              <li><i class="fas fa-check"></i> Content Management System</li>
-              <li><i class="fas fa-check"></i> E-commerce Integration</li>
-              <li><i class="fas fa-check"></i> 3 Months Support</li>
-              <li><i class="fas fa-check"></i> Performance Optimization</li>
-            </ul>
-          </div>
-          <a href="/contact.html" class="pricing-cta">Get Started</a>
-        </div>
 
-        <!-- Enterprise Package -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <h2>Enterprise</h2>
-            <div class="price">
-              <span class="currency">$</span>
-              <span class="amount">4,999</span>
-              <span class="period">/project</span>
+          <!-- Pro Package -->
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h2>Pro</h2>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">999</span>
+                <span class="period">USD</span>
+              </div>
+              <p class="starting-from">Starting from</p>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Multi-page Website</li>
+                <li><i class="fas fa-check"></i> Mobile Application</li>
+                <li><i class="fas fa-check"></i> API Integration</li>
+                <li><i class="fas fa-check"></i> Clients Database Management</li>
+                <li><i class="fas fa-check"></i> 5 Months Support</li>
+                <li><i class="fas fa-check"></i> 5 Updates Availability</li>
+              </ul>
             </div>
           </div>
-          <div class="pricing-features">
-            <ul>
-              <li><i class="fas fa-check"></i> Custom Web Application</li>
-              <li><i class="fas fa-check"></i> Full Stack Development</li>
-              <li><i class="fas fa-check"></i> API Integration</li>
-              <li><i class="fas fa-check"></i> Database Design</li>
-              <li><i class="fas fa-check"></i> Advanced Security</li>
-              <li><i class="fas fa-check"></i> 6 Months Support</li>
-              <li><i class="fas fa-check"></i> Performance Monitoring</li>
-              <li><i class="fas fa-check"></i> Dedicated Support Team</li>
-            </ul>
-          </div>
-          <a href="/contact.html" class="pricing-cta">Get Started</a>
+        </div>
+        <div class="pricing-note">
+            <p>Already have a budget in mind? Let us know and we'll adapt our services to your specific needs.</p>
+        </div>
+      </main>
+
+      <div class="footer-credit">
+        <div class="footer-left">
+          <span>2024</span>
+          <span>v1.0.0</span>
+        </div>
+        <div class="footer-center">
+          <span>Created by Alejandro R</span>
+        </div>
+        <div class="social-icons-footer">
+          <a href="https://github.com/AlexPaulMx" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://t.me/alexpaulmx" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+          <a href="https://wa.me/528672989249" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" id="cvButton" aria-label="CV"><i class="fas fa-file-alt"></i></a>
         </div>
       </div>
-    </main>
+    </div>
 
+    <!-- Modal de CV -->
+    <div id="cvModal" class="modal-overlay">
+      <div class="modal-content cv-modal">
+        <button class="close-button">&times;</button>
+        <h2 class="modal-title">Curriculum Vitae</h2>
+        <div class="cv-content">
+          <!-- El contenido de la sección About se cargará aquí -->
+        </div>
+      </div>
+    </div>
+    
     <script src="/script.js"></script>
   </body>
 </html> 

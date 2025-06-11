@@ -1,30 +1,90 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Cursor effect
+    const cursor = document.querySelector('.cursor');
+    const cursorFollower = document.querySelector('.cursor-follower');
+    
+    if (cursor && cursorFollower) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+    }
+
+    // Time update
+    const locationSpan = document.querySelector('.header-right .location');
+    if (locationSpan) {
+        function updateTime() {
+            const now = new Date();
+            const options = { hour: '2-digit', minute: '2-digit', hour12: true };
+            const formattedTime = now.toLocaleTimeString('en-US', options);
+            locationSpan.textContent = formattedTime;
+        }
+
+        updateTime();
+        setInterval(updateTime, 60000);
+    }
+
+    // Card modal functionality
     const cards = document.querySelectorAll('.card');
     const modal = document.getElementById('cardModal');
     const closeButton = document.querySelector('.close-button');
     const modalTitle = document.getElementById('modalTitle');
     const modalDescription = document.getElementById('modalDescription');
-    const locationSpan = document.querySelector('.header-right .location');
 
-    // New: CV Button and Modal elements
+    if (cards.length > 0 && modal) {
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const cardId = card.getAttribute('data-card');
+                const details = cardDetails[cardId];
+                
+                if (details) {
+                    modalTitle.textContent = details.title;
+                    modalDescription.innerHTML = details.description;
+                    modal.style.display = 'flex';
+                }
+            });
+        });
+
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+
+    // CV Modal functionality
     const cvButton = document.getElementById('cvButton');
     const cvModal = document.getElementById('cvModal');
     const cvCloseButton = cvModal ? cvModal.querySelector('.close-button') : null;
-    const cvContent = cvModal ? cvModal.querySelector('.cv-content') : null;
 
-    // Function to update time
-    function updateTime() {
-        const now = new Date();
-        const options = { hour: '2-digit', minute: '2-digit', hour12: true };
-        const formattedTime = now.toLocaleTimeString('en-US', options);
-        locationSpan.textContent = formattedTime;
+    if (cvButton && cvModal) {
+        cvButton.addEventListener('click', () => {
+            cvModal.style.display = 'flex';
+        });
+
+        if (cvCloseButton) {
+            cvCloseButton.addEventListener('click', () => {
+                cvModal.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === cvModal) {
+                cvModal.style.display = 'none';
+            }
+        });
     }
-
-    // Initial call to update time
-    updateTime();
-
-    // Update every minute
-    setInterval(updateTime, 60000);
 
     // Ensure modal is properly initialized
     if (modal) {
@@ -335,46 +395,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Add click event listeners to cards
-    cards.forEach(card => {
-        card.addEventListener('click', (e) => {
-            e.preventDefault();
-            const cardId = card.id;
-            // Skip modal for Graphic Design card
-            if (cardId === 'graphicDesign') {
-                return;
-            }
-            if (cardDetails[cardId]) {
-                modalTitle.textContent = cardDetails[cardId].title;
-                modalDescription.innerHTML = cardDetails[cardId].description;
-                modal.style.display = 'flex';
-                modal.classList.add('active');
-            }
-        });
-    });
-
-    // Close modal when clicking the close button
-    if (closeButton) {
-        closeButton.addEventListener('click', () => {
-            modal.classList.remove('active');
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 300); // Wait for transition to complete
-        });
-    }
-
-    // Close modal when clicking outside
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300); // Wait for transition to complete
-            }
-        });
-    }
-
     // Handle video playback on hover for portfolio items
     modal.addEventListener('DOMSubtreeModified', () => {
         if (modal.classList.contains('active') && modal.querySelector('.portfolio-modal-content')) {
@@ -439,11 +459,74 @@ document.addEventListener('DOMContentLoaded', () => {
         showSlides(0);
     }
 
-    // New: Handle CV button click
-    if (cvButton) {
-        cvButton.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent default link behavior
-            window.open('/cv.html', '_blank'); // Open cv.html in a new tab
+    // Portfolio Modal
+    const portfolioModal = document.querySelector('.portfolio-modal');
+    const portfolioModalClose = document.querySelector('.portfolio-modal-close');
+    const portfolioLink = document.querySelector('.portfolio-link');
+
+    if (portfolioLink) {
+        portfolioLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            portfolioModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
+    }
+
+    if (portfolioModalClose) {
+        portfolioModalClose.addEventListener('click', () => {
+            portfolioModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Card Modals
+    const cardModals = document.querySelectorAll('.card-modal');
+    const cardModalCloses = document.querySelectorAll('.card-modal-close');
+    const cardLinks = document.querySelectorAll('.card-link');
+
+    cardLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalId = link.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    cardModalCloses.forEach(close => {
+        close.addEventListener('click', () => {
+            const modal = close.closest('.card-modal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Close modals when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target.classList.contains('portfolio-modal')) {
+            portfolioModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        cardModals.forEach(modal => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Add pricing button to portfolio modal content
+    const portfolioModalContent = document.querySelector('.portfolio-modal-content');
+    if (portfolioModalContent) {
+        const pricingButton = document.createElement('a');
+        pricingButton.href = '/pricing.html';
+        pricingButton.className = 'pricing-link';
+        pricingButton.textContent = 'Ver Planes y Precios';
+        portfolioModalContent.appendChild(pricingButton);
     }
 }); 
