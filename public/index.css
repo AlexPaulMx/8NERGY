@@ -2081,7 +2081,7 @@ a {
 }
 
 .pricing-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.25);
   border-radius: 15px;
   padding: 2rem;
   transition: transform 0.3s ease;
@@ -2094,7 +2094,7 @@ a {
 }
 
 .pricing-card.featured {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.3);
   border: 2px solid var(--accent-color);
   transform: scale(1.05);
 }

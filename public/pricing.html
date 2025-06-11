@@ -10,7 +10,7 @@
     <meta property="og:title" content="8NERGY STUDIO - Pricing" />
     <meta property="og:description" content="Design Studio & Creative Agency" />
     <meta property="og:image" content="https://jade-tropical-puma-660.mypinata.cloud/ipfs/bafkreihxwnnmcnvkniw7zzqveft6bfqc6fc2zmy7o2xhpviduql3f5z6bi" />
-    <meta property="og:url" content="https://www.8nergy.xyz/pricing" />
+    <meta property="og:url" content="https://www.8nergy.xyz" />
     <meta property="og:type" content="website" />
     
     <!-- Twitter Card Meta Tags -->
@@ -19,116 +19,616 @@
     <meta name="twitter:description" content="Design Studio & Creative Agency" />
     <meta name="twitter:image" content="https://jade-tropical-puma-660.mypinata.cloud/ipfs/bafkreihxwnnmcnvkniw7zzqveft6bfqc6fc2zmy7o2xhpviduql3f5z6bi" />
     
-    <link rel="stylesheet" href="/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Arial', sans-serif;
+        background: #0f0f0f;
+        color: #ffffff;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .noise-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        background: 
+          radial-gradient(circle at 20% 80%, #1a1a1a 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, #1a1a1a 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, #161616 0%, transparent 50%),
+          #0f0f0f;
+      }
+
+      .noise {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.01) 2px,
+            rgba(255, 255, 255, 0.01) 4px
+          ),
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.01) 2px,
+            rgba(255, 255, 255, 0.01) 4px
+          );
+        opacity: 0.4;
+      }
+
+      .noise::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix in='turbulence' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+        animation: noise 2s infinite linear;
+      }
+
+      @keyframes noise {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        20% { transform: translate(-2%, 2%) rotate(1deg); }
+        40% { transform: translate(-1%, 1%) rotate(-1deg); }
+        60% { transform: translate(2%, -2%) rotate(0deg); }
+        80% { transform: translate(-2%, -1%) rotate(1deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+      }
+
+      .overlay-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+          linear-gradient(135deg, rgba(20, 20, 20, 0.3) 0%, transparent 50%),
+          linear-gradient(45deg, rgba(25, 25, 25, 0.2) 0%, transparent 50%);
+        z-index: -1;
+      }
+
+      .App-container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 1;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .name {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ffffff;
+      }
+
+      .title {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .location {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .pricing-section {
+        flex: 1;
+        padding: 3rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        margin-bottom: 2rem;
+        transition: color 0.3s ease;
+      }
+
+      .back-button:hover {
+        color: #ffffff;
+      }
+
+      .pricing-section h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 1rem;
+        color: #ffffff;
+      }
+
+      .pricing-subtitle {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .pricing-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        padding: 2rem;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pricing-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(45deg, #666666, #999999);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .pricing-card:hover::before {
+        opacity: 1;
+      }
+
+      .pricing-card.featured {
+        border: 2px solid #cccccc;
+        transform: scale(1.05);
+      }
+
+      .pricing-card.featured::before {
+        opacity: 1;
+      }
+
+      .pricing-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .pricing-header h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
+      }
+
+      .price {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 0.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .currency {
+        font-size: 1.2rem;
+        color: #cccccc;
+      }
+
+      .amount {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #ffffff;
+      }
+
+      .period {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .starting-from {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 0.5rem;
+      }
+
+      .pricing-features ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .pricing-features li {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .pricing-features i {
+        color: #999999;
+        font-size: 0.9rem;
+        width: 16px;
+        text-align: center;
+      }
+
+      .pricing-note {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-style: italic;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .footer-credit {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: auto;
+        backdrop-filter: blur(10px);
+      }
+
+      .footer-left {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .footer-center {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .social-icons-footer {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-icons-footer a {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+      }
+
+      .social-icons-footer a:hover {
+        color: #cccccc;
+      }
+
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background: rgba(10, 10, 10, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        padding: 2rem;
+        max-width: 90%;
+        max-height: 90%;
+        overflow-y: auto;
+        position: relative;
+      }
+
+      .close-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: #ffffff;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .modal-title {
+        color: #cccccc;
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+
+        .pricing-section {
+          padding: 2rem 1rem;
+        }
+
+        .pricing-section h1 {
+          font-size: 2rem;
+        }
+
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .pricing-card.featured {
+          transform: none;
+        }
+
+        .footer-credit {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="noise"></div>
-    <div class="container">
-      <header>
-        <div class="logo">
-          <a href="/">8NERGY STUDIO</a>
+    <div class="noise-background">
+      <div class="noise"></div>
+    </div>
+    <div class="overlay-background"></div>
+    
+    <div class="App-container">
+      <header class="header">
+        <div class="header-left">
+          <span class="name">8NERGY</span>
+          <span class="title">Creative Studio</span>
         </div>
-        <nav>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/pricing.html" class="active">Pricing</a></li>
-            <li><a href="/contact.html">Contact</a></li>
-          </ul>
-        </nav>
+        <div class="header-right">
+          <span class="location" id="locationTime">Loading...</span>
+        </div>
       </header>
 
-      <main>
-        <section class="pricing-section">
-          <h1>Choose Your Plan</h1>
-          <div class="pricing-grid">
-            <!-- Basic Plan -->
-            <div class="pricing-card">
-              <div class="pricing-header">
-                <h2>Basic</h2>
-                <div class="price">
-                  <span class="amount">$499</span>
-                  <span class="period">/project</span>
-                </div>
-              </div>
-              <ul class="features">
-                <li><i class="fas fa-check"></i> Logo Design</li>
-                <li><i class="fas fa-check"></i> Brand Guidelines</li>
-                <li><i class="fas fa-check"></i> 2 Revisions</li>
-                <li><i class="fas fa-check"></i> Basic Social Media Kit</li>
-                <li><i class="fas fa-check"></i> 5 Business Days Delivery</li>
-              </ul>
-              <a href="/contact.html" class="cta-button">Get Started</a>
-            </div>
+      <main class="pricing-section">
+        <a href="/" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        
+        <h1>Our Services</h1>
+        <p class="pricing-subtitle">Choose the perfect plan for your digital needs</p>
 
-            <!-- Pro Plan -->
-            <div class="pricing-card featured">
-              <div class="pricing-header">
-                <h2>Pro</h2>
-                <div class="price">
-                  <span class="amount">$999</span>
-                  <span class="period">/project</span>
-                </div>
+        <div class="pricing-grid">
+          <!-- Basic Package -->
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h2>Basic</h2>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">499</span>
+                <span class="period">USD</span>
               </div>
-              <ul class="features">
-                <li><i class="fas fa-check"></i> Everything in Basic</li>
-                <li><i class="fas fa-check"></i> Website Design</li>
-                <li><i class="fas fa-check"></i> 3 Revisions</li>
-                <li><i class="fas fa-check"></i> Complete Social Media Kit</li>
-                <li><i class="fas fa-check"></i> 7 Business Days Delivery</li>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Single Page Website</li>
+                <li><i class="fas fa-check"></i> Dynamic Design</li>
+                <li><i class="fas fa-check"></i> Responsive with Mobile Devices</li>
                 <li><i class="fas fa-check"></i> 1 Month Support</li>
+                <li><i class="fas fa-check"></i> 1 Update</li>
               </ul>
-              <a href="/contact.html" class="cta-button">Get Started</a>
-            </div>
-
-            <!-- Enterprise Plan -->
-            <div class="pricing-card">
-              <div class="pricing-header">
-                <h2>Enterprise</h2>
-                <div class="price">
-                  <span class="amount">$1999</span>
-                  <span class="period">/project</span>
-                </div>
-              </div>
-              <ul class="features">
-                <li><i class="fas fa-check"></i> Everything in Pro</li>
-                <li><i class="fas fa-check"></i> Custom Illustrations</li>
-                <li><i class="fas fa-check"></i> Unlimited Revisions</li>
-                <li><i class="fas fa-check"></i> Motion Graphics</li>
-                <li><i class="fas fa-check"></i> 10 Business Days Delivery</li>
-                <li><i class="fas fa-check"></i> 3 Months Support</li>
-                <li><i class="fas fa-check"></i> Priority Support</li>
-              </ul>
-              <a href="/contact.html" class="cta-button">Get Started</a>
             </div>
           </div>
-        </section>
+
+          <!-- Medium Package -->
+          <div class="pricing-card featured">
+            <div class="pricing-header">
+              <h2>Medium</h2>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">800</span>
+                <span class="period">USD</span>
+              </div>
+              <p class="starting-from">Starting from</p>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Multi-page Website</li>
+                <li><i class="fas fa-check"></i> Dynamic Design</li>
+                <li><i class="fas fa-check"></i> Responsive with Mobile Devices</li>
+                <li><i class="fas fa-check"></i> E-commerce Integration Option</li>
+                <li><i class="fas fa-check"></i> Clients Database Management</li>
+                <li><i class="fas fa-check"></i> 3 Months Support</li>
+                <li><i class="fas fa-check"></i> 3 Updates Availability</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Pro Package -->
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h2>Pro</h2>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">999</span>
+                <span class="period">USD</span>
+              </div>
+              <p class="starting-from">Starting from</p>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Multi-page Website</li>
+                <li><i class="fas fa-check"></i> Mobile Application</li>
+                <li><i class="fas fa-check"></i> API Integration</li>
+                <li><i class="fas fa-check"></i> Clients Database Management</li>
+                <li><i class="fas fa-check"></i> 5 Months Support</li>
+                <li><i class="fas fa-check"></i> 5 Updates Availability</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pricing-note">
+          <p>Already have a budget in mind? Let us know and we'll adapt our services to your specific needs.</p>
+        </div>
       </main>
 
-      <footer>
-        <div class="footer-content">
-          <div class="footer-section">
-            <h3>8NERGY STUDIO</h3>
-            <p>Design Studio & Creative Agency</p>
-          </div>
-          <div class="footer-section">
-            <h3>Contact</h3>
-            <p>Email: info@8nergy.xyz</p>
-          </div>
-          <div class="footer-section">
-            <h3>Follow Us</h3>
-            <div class="social-links">
-              <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-              <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-              <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-            </div>
-          </div>
+      <div class="footer-credit">
+        <div class="footer-left">
+          <span>2024</span>
+          <span>v1.0.0</span>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2024 8NERGY STUDIO. All rights reserved.</p>
+        <div class="footer-center">
+          <span>Created by Alejandro R</span>
         </div>
-      </footer>
+        <div class="social-icons-footer">
+          <a href="https://github.com/AlexPaulMx" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://t.me/alexpaulmx" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+          <a href="https://wa.me/528672989249" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" id="cvButton" aria-label="CV"><i class="fas fa-file-alt"></i></a>
+        </div>
+      </div>
     </div>
-    <script src="/script.js"></script>
+
+    <!-- Modal de CV -->
+    <div id="cvModal" class="modal-overlay">
+      <div class="modal-content cv-modal">
+        <button class="close-button">&times;</button>
+        <h2 class="modal-title">Curriculum Vitae</h2>
+        <div class="cv-content">
+          <!-- El contenido de la sección About se cargará aquí -->
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      // Update location and time
+      function updateLocationTime() {
+        function updateTime() {
+          const now = new Date();
+          const timeString = now.toLocaleTimeString([], { 
+            hour: '2-digit', 
+            minute: '2-digit',
+            hour12: true 
+          });
+          
+          // Try to get user's location
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              (position) => {
+                // Use a reverse geocoding service (using a free API)
+                fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&localityLanguage=en`)
+                  .then(response => response.json())
+                  .then(data => {
+                    const city = data.city || data.locality || 'Unknown Location';
+                    document.getElementById('locationTime').textContent = `${city} • ${timeString}`;
+                  })
+                  .catch(() => {
+                    document.getElementById('locationTime').textContent = `Current Location • ${timeString}`;
+                  });
+              },
+              () => {
+                // If geolocation fails, just show time
+                document.getElementById('locationTime').textContent = `Location • ${timeString}`;
+              }
+            );
+          } else {
+            // If geolocation not supported
+            document.getElementById('locationTime').textContent = `Location • ${timeString}`;
+          }
+        }
+
+        // Update immediately and then every minute
+        updateTime();
+        setInterval(updateTime, 60000);
+      }
+
+      // Initialize when page loads
+      updateLocationTime();
+
+      // CV Modal functionality
+      const cvButton = document.getElementById('cvButton');
+      const cvModal = document.getElementById('cvModal');
+      const closeButton = document.querySelector('.close-button');
+
+      cvButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        cvModal.style.display = 'flex';
+      });
+
+      closeButton.addEventListener('click', () => {
+        cvModal.style.display = 'none';
+      });
+
+      cvModal.addEventListener('click', (e) => {
+        if (e.target === cvModal) {
+          cvModal.style.display = 'none';
+        }
+      });
+
+      // Smooth animations on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe pricing cards
+      document.querySelectorAll('.pricing-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+      });
+    </script>
   </body>
-</html> 
+</html>
