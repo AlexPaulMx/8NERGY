@@ -2058,3 +2058,134 @@ a {
   height: 100%;
   overflow-y: auto;
 }
+
+/* Pricing Section Styles */
+.pricing-section {
+  padding: 120px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pricing-section h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.pricing-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 4rem;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pricing-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+}
+
+.pricing-card.featured {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--accent-color);
+}
+
+.pricing-header {
+  margin-bottom: 2rem;
+}
+
+.pricing-header h2 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 3rem;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.currency {
+  font-size: 1.5rem;
+  vertical-align: super;
+}
+
+.period {
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.pricing-features {
+  margin: 2rem 0;
+}
+
+.pricing-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pricing-features li {
+  margin: 1rem 0;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pricing-features i {
+  color: var(--accent-color);
+}
+
+.pricing-cta {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--accent-color);
+  color: var(--background-color);
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.pricing-cta:hover {
+  transform: scale(1.05);
+  background: var(--accent-color-hover);
+}
+
+@media (max-width: 768px) {
+  .pricing-section {
+    padding: 80px 20px;
+  }
+
+  .pricing-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
