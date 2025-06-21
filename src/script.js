@@ -136,10 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="portfolio-modal-content">
                     <h2 class="portfolio-header-text">Explore a selection of projects that showcase some of my most rewarding design experiences.</h2>
                     <div class="portfolio-grid">
-                        <a href="https://inprocessremix.framer.website/" target="_blank" class="portfolio-item">
-                            <img src="https://jade-tropical-puma-660.mypinata.cloud/ipfs/bafybeihxp3sco7kkrd5563hv5ywx6i3fcmu3evb7ikukihv3m43icqahbe" alt="Inprocess - App Design">
+                        <a href="https://invigorated-cogwheel-753137.framer.app/" target="_blank" class="portfolio-item">
+                            <img src="https://imagedelivery.net/8nergy/8nergy/ywx6i3fcmu3evb7ikukihv3m43icqahbe" alt="Timeline - App Design">
                             <div class="item-details">
-                                <span class="portfolio-title">Inprocess</span>
+                                <span class="portfolio-title">Timeline</span>
                                 <span class="portfolio-category">Visit</span>
                             </div>
                         </a>
